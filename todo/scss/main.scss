@@ -1,0 +1,183 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+.hide{
+   visibility: hidden;
+}
+.container{
+    max-width: 620px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+//todo=================================================
+.todo {
+    margin: 20px 0 0 0;
+    &__body {
+        border-radius: 15px;
+        border: 2px solid black;
+        min-height: 115px;
+        background: #D5D5D5FF;
+        padding: 20px 40px 70px 40px;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 40px 0;
+    }
+
+    &__del-all {
+        border: 3px solid black;
+        border-radius: 5px;
+        min-height: 50px;
+        max-width: 113px;
+        width: 100%;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #17E7CFFF;
+        transition: all 0.3s;
+        &:hover{
+            background: rgb(71, 255, 233);
+        }
+    }
+    &__form{
+        width: 100%;
+        max-width: 240px;
+    }
+    &__enter{
+        border: 3px solid black;
+        padding: 0 15px;
+        border-radius: 5px;
+        min-height: 50px;
+        width: 100%;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &::placeholder{
+            text-align: center;
+        }
+    }
+    &__add {
+        border: 3px solid black;
+        border-radius:5px;
+        min-height: 50px;
+        max-width: 113px;
+        width: 100%;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #17E7CFFF;
+        transition: all 0.3s;
+        &:hover{
+            background: rgb(71, 255, 233);
+        }
+    }
+}
+//component===========================================
+.list{
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+}
+.component {
+    position: relative;
+    min-height: 123px;
+    border: 3px solid black;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    &_active{
+        background: yellowgreen;
+    }
+    &__form {
+        max-width: 337px;
+        width: 100%;
+        padding-left: 12px;
+        input{
+           width: 100%;
+           outline: none;
+           min-height: 55px; 
+           border: none;
+           font-size: 16px;
+           padding: 0 15px;
+           &::placeholder{
+                text-align: center;
+                font-size: 16px;
+           }
+        }
+    }
+    &__form_active{
+        input{
+            &::placeholder{text-decoration: line-through;}
+        }
+    }
+    &__check{
+        border: 3px solid black;
+        background: #17E7CFFF;
+        margin-left: 14px;
+        padding: 3px 10px 3px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        width: 44.8px;
+        height: 30.8px;
+        cursor: pointer;
+        &:hover{
+           background: rgb(71, 255, 233);
+        }
+        img{
+            width: 20px;
+            height: 20px;
+        }
+    }
+    &__close{
+        border: 3px solid black;
+        border-radius: 5px;
+        background: #17E7CFFF;
+        margin: 9px 16px 0px 0;
+        padding: 5px 15px 5px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        &:hover{
+            background: rgb(71, 255, 233);
+         }
+        img{
+            width: 10px;
+            height: 15px;
+        }
+    }
+    &__date{
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 30px;
+        padding: 0px 10px;
+        width: 85px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+}
+
+
+
