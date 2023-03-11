@@ -1,6 +1,5 @@
 const rightClickButton = document.getElementById("right_click_button");
-rightClickButton.addEventListener("contextmenu", (event) => {
-  event.preventDefault();
+rightClickButton.addEventListener("contextmenu", () => {
   alert("Это event contextmenu!!!");
 });
 
