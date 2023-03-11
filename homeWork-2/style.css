@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+}
+
+button {
+    color: rgb(0, 0, 0);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px
+}
+
+
+button {
+    background-color: rgb(255, 255, 255);
+}
+
+button.active {
+    background-color: rgb(255, 0, 0);
+}
+
+
+.square {
+    width: 25%;
+    height: 25%;
+    background-color: #ff0101;
+    box-sizing: border-box;
+    border: 1px solid #000;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 0fr);
+    gap: 20px;
+    justify-content: center;
+
+}
+
+.grid-item {
+    background-color: #ccc;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
