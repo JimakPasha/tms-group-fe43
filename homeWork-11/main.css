@@ -1,0 +1,22 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+.wrapper {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 30px;
+   margin: 50px;
+}
+
+button {
+   background-color: lightsalmon;
+   border: none;
+   cursor: pointer;
+   color: blue;
+   padding: 10px;
+   border-radius: 5px;
+}
