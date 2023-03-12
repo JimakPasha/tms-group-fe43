@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btns {
+display: flex;
+gap: 50px;
+justify-content: center;
+align-items: center;
+margin-top: 50px;
+}
+
+#btn1, #btn2, #btn3, #btn4, #btn5{
+    padding: 10px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.boxes {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.black {
+    background-color: black;
+}
+.last {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
