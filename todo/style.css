@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#root{
+    margin: 0 auto;
+    margin-top: 10%;
+    width: 600px;
+    height: 460px;
+    background-color: rgb(217, 217, 217);
+    border-radius: 20px;
+    border: 3px solid black;
+
+}
+
+.deliteAll-button, .deliteAll2-button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 3px solid black;
+    background-color: aquamarine;
+    color: #5E5E5E;
+    cursor: pointer;
+
+}
+.input-to-do {
+    padding: 20px 50px;
+    border-radius: 10px;
+    border: 3px solid black;
+    text-align: center;
+    background-color: #FFFFFF;
+    color: #D5D5D5;
+}
+
+.wrap{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.enterBnt{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 3px solid black;
+    background-color: aquamarine;
+    color: #5E5E5E;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.closeBtn{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 3px solid black;
+    background-color: aquamarine;
+    color: #5E5E5E;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.todoText {
+    padding: 20px 70px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    background-color: #FFFFFF;
+    color: #D5D5D5;
+}
+.innerBig, .innerBig2{
+    margin: 36px;
+    padding: 35px 10px;
+    border-radius: 16px;
+    gap: 10px;
+    border: 3px solid black;
+    position: relative;
+}
+
+.date-input{
+    width: 90px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
