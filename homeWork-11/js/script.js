@@ -31,8 +31,9 @@ container.insertAdjacentElement('beforeend',task02)
 
     let button02 = createElement('div',{classList:'task02__button02',textContent:`Нажми правой клавиши!`})
     task02.insertAdjacentElement('beforeend',button02)
-    function showConsole2(){
+    function showConsole2(event){
         alert('Это event contextmenu!!!')
+        event.preventDefault()
     }
     button02.addEventListener('contextmenu',showConsole2)
 //task03============================================================
