@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(114, 114, 114);
+  color: white;
+  font-family: "Caveat";
+  min-height: 100vh;
+}
+
+header {
+  font-size: 30px;
+}
+
+header,
+form {
+  min-height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form input {
+  min-width: 500px;
+  padding: 15px;
+  font-size: 25px;
+  border: none;
+  background: white;
+  border-radius: 30px;
+}
+
+form button {
+  color: rgb(255, 200, 0);
+  background: white;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3 ease;
+  margin-left: 20px;
+}
+
+form button:hover {
+  color: white;
+  background: rgb(255, 200, 0);
+}
+
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list {
+  min-width: 25%;
+  list-style: none;
+}
+
+.todo {
+  padding-left: 10px;
+  background: white;
+  color: black;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s;
+  border-radius: 30px;
+}
+
+.todo li {
+  flex: 1;
+}
+
+.trash-btn,
+.complete-btn {
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.complete-btn {
+  background: rgb(255, 200, 0);
+}
+
+.trash-btn {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background: rgb(171, 171, 171);
+}
+
+.todo-item {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
+}
+
+.fa-trash,
+.fa-check-circle {
+  pointer-events: none;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.slide {
+  opacity: 0;
+}
