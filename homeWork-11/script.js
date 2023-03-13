@@ -82,23 +82,21 @@
     }
     wrapper.addEventListener("click", (e) => {
       const target = e.target;
-      if (target.className.includes("cells")) return;
-      if (target.className.includes("cell-")) {
-        target.style.background =
-          "#" +
-          (Math.random().toString(16) + "000000").substring(2, 8).toUpperCase();
-        for (const i of wrapper.childNodes) {
-          if (i === e.target) {
-            continue;
-          }
-          i.style.background = "buttonface";
+      if (!target.className.includes("cell-")) return;
+      target.style.background =
+        "#" +
+        (Math.random().toString(16) + "000000").substring(2, 8).toUpperCase();
+      for (const i of wrapper.childNodes) {
+        if (i === e.target) {
+          continue;
         }
+        i.style.background = "buttonface";
       }
     });
   })();
   (function () {
     const wrapper = createElement("wrapper");
-    Object.assign(wrapper.style, center)
+    Object.assign(wrapper.style, center);
     let countValue = 0;
     const countWrapper = createElement("div", {
       innerHTML: `count: ${countValue}`,
