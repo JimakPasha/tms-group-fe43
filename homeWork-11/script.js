@@ -49,10 +49,6 @@ const number = document.querySelector('.number');
 const button6 = document.querySelector('.button6');
 const button7 = document.querySelector('.button7');
 
-const clicks = document.querySelector('.clicks');
-const btn4 = document.querySelector('.btn4');
-const btn5 = document.querySelector('.btn5');
-
 button6.addEventListener('click', () =>{
     number.innerHTML++;
 });
@@ -61,98 +57,3 @@ button7.addEventListener('click', () =>{
    number.innerHTML--;
 });
 
-
-btn4.addEventListener('click', () =>{
-   clicks.innerHTML++;
-});
-//самодеятельность
-btn5.addEventListener('click', () =>{
-    clicks.innerHTML--;
-});
-
-
-// button6.addEventListener('click', () => {
-   
-
-//    for (let i = 0; i < button6.length; i++) {
-       
-//               let count = number[i];
-              
-//               count.onclick = function() {
-//                 counter ++;
-//                 count.innerHTML = counter;
-
-//                 alert(count);
-//               }
-//             }
-//         }
-//  );
-
- 
-//   function makeCounter() {
-//     let counter = 0;
-//       for (let i=0; i < button6.length; i++) {
-       
-//         let btn = button6[i];
-        
-//         btn.onclick = function() {
-//           counter ++;
-//           btn.innerHTML = counter;
-//         }
-//       }
-//   }
-//   makeCounter();
-
-
-
-// number.forEach(function(el){ 
-//    el.onclick = function() {
-//      let cnt = this.closest('li').querySelector('.cnt');
-//      cnt.innerText = parseInt(cnt.innerText, 10)+1;
-//    };
-//  });
-
-
-
-// button6.addEventListener('click', (e) => {
-//    let counter = 0; 
-//    for (let i = 0; i <= number.length; i++) {
-//       if (number[i] === 1) {
-//          counter++;
-//       }
-//    }
-   
-// });
-
-// button6.addEventListener('click', (e) => {
-   
-//    let count = 0;
-//    return function(e) {
-//        count++;
-//        console.log(count);
-  
-// }
-// });
-
-
-// function count() {
-//    let count = 0;
-//    return function() {
-//        count++;
-//        console.log(count);
-//        if(count > 3) {
-//            console.log("Вы превысили лимит")
-//        }
-//    }
-// }
-
-
-
-// let arr = ['a', 'b', 'c', 'd', 'e', 'a', 'a'];
-// let counter = 0; //посчитать количество определённых элементов 
-// for (let elem of arr) {
-//    if (elem == 'a') {
-//       counter++;
-//    }
-// }
-// console.log(counter);
