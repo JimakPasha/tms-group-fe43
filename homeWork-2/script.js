@@ -21,10 +21,9 @@ toggleButton.addEventListener('click', function(event){
 const squareField = document.querySelector('.task-4');
 
 squareField.addEventListener('click', (event) => {
-    if(event.target.classList.contains('item'))
-{
+    if(event.target.classList.contains('item')){
     event.target.classList.toggle('active');
-}
+    }
 });
 
 
