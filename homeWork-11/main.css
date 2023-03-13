@@ -65,3 +65,11 @@ button {
    background-color: olive;
  }
  
+.number{
+   color: olive;
+   background-color: lightsalmon;
+   border: 2px solid olive;
+   padding: 10px;
+   border-radius: 5px;
+   
+}

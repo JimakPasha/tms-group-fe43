@@ -43,11 +43,32 @@ wrapper_task4.addEventListener('click', (event) => {
 // 1. Создать на страницу тег div в котором будет число 0
 // 2. Создать кнопку
 // 3. Каждый раз после нажатии на кнопку число в div должно увеличиваться на 1
-const wrapper_task5 = document.querySelector('.wrapper_task5');
-const button6 = document.querySelector('.button6');
+// const wrapper_task5 = document.querySelector('.wrapper_task5');
+
 const number = document.querySelector('.number');
+const button6 = document.querySelector('.button6');
+const button7 = document.querySelector('.button7');
+
+const clicks = document.querySelector('.clicks');
+const btn4 = document.querySelector('.btn4');
+const btn5 = document.querySelector('.btn5');
+
+button6.addEventListener('click', () =>{
+    number.innerHTML++;
+});
+
+button7.addEventListener('click', () =>{
+   number.innerHTML--;
+});
 
 
+btn4.addEventListener('click', () =>{
+   clicks.innerHTML++;
+});
+//самодеятельность
+btn5.addEventListener('click', () =>{
+    clicks.innerHTML--;
+});
 
 
 // button6.addEventListener('click', () => {
