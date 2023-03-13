@@ -22,12 +22,19 @@ btn5.addEventListener('click', () => {
         btn5.style.backgroundColor = 'red';
     }
 });
-const box = document.querySelectorAll('.box');
-for (let i = 0; i < box.length; i++) {
-    box[i].addEventListener('click', () => {
-        box[i].classList.toggle('black');
-    });
-};
+// const box = document.querySelectorAll('.box');
+// for (let i = 0; i < box.length; i++) {
+//     box[i].addEventListener('click', () => {
+//         box[i].classList.toggle('black');
+//     });
+// };
+
+const boxes = document.querySelector('.boxes');
+boxes.addEventListener('click', (e) => {
+    if (e.target.classList.contains('box')) {
+        e.target.classList.toggle('black');
+    };
+});
 
 const counter = document.getElementById('counter');
 const increment = document.getElementById('increment');
