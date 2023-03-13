@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#todo-app {
+    max-width: 500px;
+    width: 100%;
+    min-height: 500px;
+    background-color: lightgray;
+    margin: 0 auto;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 8px;
+}
+
+li {
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completed {
+    background-color: lightgreen;
+    /* text-decoration: line-through; */
+}
+
+.task-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+}
+
+input[type="text"] {
+    display: block;
+    /* margin: 10px auto; */
+    padding: 5px;
+}
+
+.main-div {
+    display: flex;
+    padding-top: 10px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.main-div > button {
+    width: 100px;
+    height: 50px;
+}
+
+
+#delete-all-btn, #add-task-btn {
+    background-color: aqua;
+    outline: none;
+    border: 3px solid black;
+    border-radius: 8px;
+}
+
+#task-input {
+    outline: none;
+    border: 3px solid black;
+    border-radius: 8px;
+}
+
+.task-item {
+    max-width: 400px;
+    width: 100%;
+    min-height: 100px;
+    margin: 0 auto;
+    margin-top: 10px;
+    /* background-color: transparent; */
+    border: 3px solid black;
+    border-radius: 8px;
+    position: relative;
+}
+
+.task-buttons {
+    display: flex;
+    justify-content: end;
+}
+
+.task-date {
+    max-width: 60px;
+    width: 100%;
+    font-size: 12px;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 30px;
+    bottom: 5px;
+}
+
+.complete-task-btn, .delete-task-btn {
+    background-color: aqua;
+    border: 3px solid black;
+    border-radius: 8px;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.delete-task-btn {
+    position: absolute;
+    top: 5px;
+}
+
+.task-title-input {
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+}
+
+#task-list {
+    margin-bottom: 10px;
+}
