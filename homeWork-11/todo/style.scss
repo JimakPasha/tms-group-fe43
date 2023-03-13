@@ -15,6 +15,13 @@
   background: white;
 }
 
+%input{
+  @extend %boder;
+  width: 100%;
+  padding: 10px 10px;
+  text-align: center;
+}
+
 .root {
   @extend %boder;
   max-width: max-content;
@@ -73,10 +80,10 @@
     cursor: text;
   }
   &__input {
-    @extend %boder;
-    width: 100%;
-    padding: 10px 10px;
-    text-align: center;
+    @extend %input;
+    &-search{
+      @extend %input
+    }
   }
   &__input::placeholder {
     text-align: center;
@@ -85,5 +92,22 @@
   // }
   &__date {
     @extend %text;
+  }
+}
+
+.completed {
+  background: green;
+  display: none;
+}
+
+.searched{
+  background: rebeccapurple;
+  text-decoration: none;
+}
+
+.searched-clean{
+  background: none;
+  & > span{
+    text-decoration: none;
   }
 }
