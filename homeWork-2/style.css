@@ -1,0 +1,51 @@
+button{
+    cursor: pointer;
+}
+
+.task-1{
+    margin-bottom: 20px;
+}
+
+.task-2{
+    margin-bottom: 20px;
+}
+
+.btn-3{
+    padding: 10px 20px;
+    background: white;
+}
+
+.btn-3.active{
+    background-color: red;
+    color: white;
+}
+
+.task-3{
+    margin-bottom: 30px;
+}
+
+.task-4{
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.item{
+    border: 1px solid black;
+    min-width: 100px;
+    min-height: 100px;
+    cursor: pointer;
+}
+
+.item.active{
+    background-color: black;
+}
+
+.task-5{
+    font-size: 40px;
+}
+
+.btn-5{
+    font-size: 30px;
+}
