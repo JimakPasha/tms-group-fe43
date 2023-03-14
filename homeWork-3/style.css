@@ -1,0 +1,21 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    max-width: 200px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  button {
+    margin-top: 10px;
+    color: black;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
