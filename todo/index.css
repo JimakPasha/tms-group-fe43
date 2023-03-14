@@ -1,0 +1,146 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#root{
+    background-color: lightgrey;
+    max-width: 600px;
+    width: 100%;
+    margin: 200px auto;
+    border-radius: 13px;
+    border: 3px solid black;
+    padding: 20px 40px;
+}
+
+button{
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover{
+    background-color: lightcoral;
+}
+
+.todo-list-header{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.todo-list-content{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 30px;
+    
+}
+
+.todo{
+    display: flex;
+    gap: 15px;
+    border-radius: 13px;
+    border: 3px solid black;
+    padding: 10px;
+}
+
+
+.todo--active{
+    background-color: lightpink;
+}
+
+.todo-part:first-of-type{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.todo-part:last-of-type{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.todo-list{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.delete-button{
+    background-color: aqua;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 15px;
+    color: dimgray;
+    border-radius: 13px;
+    border: 3px solid black;
+}
+
+.todo-list-form{
+    border-radius: 13px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.todo-list-form input{
+    padding: 20px;
+    border-radius: 13px;
+    border: 3px solid black;
+}
+
+.todo-list-form input::placeholder{
+    font-size: 1rem;
+    font-weight: 500;
+    color: dimgray;
+    
+}
+
+
+
+.todo-list-button{
+    background-color: aqua;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 20px;
+    color: dimgray;
+    border-radius: 13px;
+    border: 3px solid black;
+}
+
+.todo-button{
+    background-color: aqua;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 15px 20px;
+    color: dimgray;
+    border-radius: 13px;
+    border: 3px solid black;
+}
+
+.todo-title{
+    background-color: white;
+    min-width: 300px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.todo-title--active{
+    text-decoration: line-through;
+}
+
+.todo-date{
+    background-color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
