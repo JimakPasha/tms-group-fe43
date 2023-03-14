@@ -3,6 +3,10 @@ const todoInput = document.getElementById("todo-input");
 const addButton = document.getElementById("add-button");
 addButton.addEventListener("click", addTask);
 
+if (localStorage.getItem("tasks")) {
+  todoList.innerHTML = localStorage.getItem("tasks");
+  }
+
 function addTask(event) {
   event.preventDefault();
   const newTask = document.createElement("li");
@@ -23,7 +27,10 @@ function addTask(event) {
   newTask.appendChild(deleteButton);
   todoList.appendChild(newTask);
   todoInput.value = "";
+  localStorage.setItem("tasks", todoList.innerHTML);
 }
+
+
 
 // Delete
 function deleteTask(event) {
