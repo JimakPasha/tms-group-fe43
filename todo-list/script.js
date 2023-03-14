@@ -1,11 +1,13 @@
 const todoList = document.getElementById("todo-list");
 const todoInput = document.getElementById("todo-input");
 const addButton = document.getElementById("add-button");
-addButton.addEventListener("click", addTask);
+
 
 if (localStorage.getItem("tasks")) {
   todoList.innerHTML = localStorage.getItem("tasks");
-  }
+}
+
+addButton.addEventListener("click", addTask);
 
 function addTask(event) {
   event.preventDefault();
@@ -15,24 +17,30 @@ function addTask(event) {
   const deleteButton = document.createElement("button");
   deleteButton.innerHTML = "Delete";
   deleteButton.classList.add("delete-button");
+
   if (todoInput.value <= 0 || todoInput.value.length >= 20) {
     alert("empty string");
     return;
   }
-  
+ 
   deleteButton.addEventListener("click", deleteTask);
+
   newTask.appendChild(taskText);
   newTask.appendChild(document.createElement("br"));
   newTask.appendChild(taskDate);
   newTask.appendChild(deleteButton);
   todoList.appendChild(newTask);
   todoInput.value = "";
+
   localStorage.setItem("tasks", todoList.innerHTML);
 }
 
-
-
-// Delete
 function deleteTask(event) {
   event.target.parentNode.remove();
+  localStorage.setItem("tasks", todoList.innerHTML);
 }
+
+const deleteButtons = document.querySelectorAll(".delete-button");
+deleteButtons.forEach(button => {
+  button.addEventListener("click", deleteTask);
+});
