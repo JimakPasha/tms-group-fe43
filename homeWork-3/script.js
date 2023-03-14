@@ -9,7 +9,7 @@ const list = document.getElementById("list");
 //функция создания листа
 function createListItem(firstName, lastName, age) {
   const li = document.createElement("li");
-  li.textContent = `${firstName} ${lastName}, ${age} лет`;
+  li.textContent = `Пользователь: ${firstName} ${lastName}, ${age} лет`;
   list.appendChild(li);
 }
 
