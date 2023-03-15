@@ -20,8 +20,7 @@ function stopLetterInput(element, type, event) {
       (event.keyCode >= 59 && event.keyCode <= 61) ||
       (event.keyCode >= 106 && event.keyCode <= 111) ||
       (event.keyCode >= 186 && event.keyCode <= 222) ||
-      event.keyCode === 173 ||
-      element.value.length > 2
+      event.keyCode === 173 
     ) {
       Object.assign(element, { readOnly: true });
     } else {
@@ -42,6 +41,7 @@ Object.assign(root.style, center, {
 });
 
 const list = createElement("ul", { className: "root__list" });
+
 let usersArray = [];
 if (localStorage.getItem("users")) {
   usersArray = JSON.parse(localStorage.getItem("users"));
@@ -51,8 +51,10 @@ if (localStorage.getItem("users")) {
     list.insertAdjacentElement("beforeend", elem);
   });
 }
+
 const inputs = ["name", "surname", "age"];
 const buttons = ["submit", "reset"];
+
 for (const inputName of inputs) {
   const input = createElement("input", {
     placeholder: `введитве ваше ${inputName}`,
@@ -92,22 +94,28 @@ for (const btn of buttons) {
           [inp.name]: inp.value,
         });
       }
+
       usersArray.push(user);
       const listItem = createElement("li", { className: "list-item" });
       listItem.innerText = `Пользователь: ${user.name} ${user.surname}, ${user.age} лет`;
+
       for (const inp of inputs) {
         list.insertAdjacentElement("beforeend", listItem);
         inp.value = "";
       }
+
       localStorage.setItem("users", JSON.stringify(usersArray));
     }
+
     function addItemAtKey(e) {
       if (e.keyCode !== 13) return;
       addItem();
     }
+
     button.addEventListener("click", addItem);
     root.addEventListener("keydown", addItemAtKey);
   }
+  
   if (button.type === "reset") {
     button.addEventListener("click", () => {
       const list = root.getElementsByClassName("root__list")[0];
