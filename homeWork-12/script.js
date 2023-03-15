@@ -20,7 +20,8 @@ function stopLetterInput(element, type, event) {
       (event.keyCode >= 59 && event.keyCode <= 61) ||
       (event.keyCode >= 106 && event.keyCode <= 111) ||
       (event.keyCode >= 186 && event.keyCode <= 222) ||
-      event.keyCode === 173
+      event.keyCode === 173 ||
+      element.value.length > 2
     ) {
       Object.assign(element, { readOnly: true });
     } else {
@@ -31,7 +32,7 @@ function stopLetterInput(element, type, event) {
 
 const root = document.getElementById("root");
 const center = {
-  margin: "auto",
+  margin: " auto",
   width: "max-content",
 };
 Object.assign(root.style, center, {
@@ -41,6 +42,15 @@ Object.assign(root.style, center, {
 });
 
 const list = createElement("ul", { className: "root__list" });
+let usersArray = [];
+if (localStorage.getItem("users")) {
+  usersArray = JSON.parse(localStorage.getItem("users"));
+  usersArray.forEach((item) => {
+    const elem = createElement("li", { className: "list-item" });
+    elem.innerText = `Пользователь ${item.name} ${item.surname}, ${item.age} лет`;
+    list.insertAdjacentElement("beforeend", elem);
+  });
+}
 const inputs = ["name", "surname", "age"];
 const buttons = ["submit", "reset"];
 for (const inputName of inputs) {
@@ -49,13 +59,14 @@ for (const inputName of inputs) {
     className: `form__${inputName}`,
     type: inputName === "age" ? "number" : "text",
     name: inputName,
+    max: inputName === "age" ? "2" : "",
   });
-  console.log(input);
   input.addEventListener("keydown", (e) => {
     stopLetterInput(input, input.type, e);
   });
   root.insertAdjacentElement("beforeend", input);
 }
+
 for (const btn of buttons) {
   const button = createElement("button", {
     className: `form__${btn}`,
@@ -64,20 +75,31 @@ for (const btn of buttons) {
       (btn === "submit" ? "Создать" : "") ||
       (btn === "reset" ? "Очистить форму" : ""),
   });
+
   if (button.type === "submit") {
     function addItem() {
       const inputs = Array.from(root.getElementsByTagName("input"));
-      const listItem = createElement("li", { className: "list-item" });
-      const inputValues = inputs.map((item) => {
-        item.value !== "" || item.value >= 18;
-        return item.value;
-      });
-      listItem.innerText = `Пользователь: ${inputValues[0]} ${inputValues[1]}, ${inputValues[2]} лет`;
+      if (
+        inputs.some((item) => {
+          return item.value === "";
+        }) ||
+        inputs[2].value < 18
+      )
+        return;
+      const user = {};
       for (const inp of inputs) {
-        if (inp.value === "" || inp.value < 18) return;
+        Object.assign(user, {
+          [inp.name]: inp.value,
+        });
+      }
+      usersArray.push(user);
+      const listItem = createElement("li", { className: "list-item" });
+      listItem.innerText = `Пользователь: ${user.name} ${user.surname}, ${user.age} лет`;
+      for (const inp of inputs) {
         list.insertAdjacentElement("beforeend", listItem);
         inp.value = "";
       }
+      localStorage.setItem("users", JSON.stringify(usersArray));
     }
     function addItemAtKey(e) {
       if (e.keyCode !== 13) return;
@@ -89,9 +111,9 @@ for (const btn of buttons) {
   if (button.type === "reset") {
     button.addEventListener("click", () => {
       const list = root.getElementsByClassName("root__list")[0];
-      console.log(list);
       for (let i = list.childElementCount; i > 0; i--) {
         list.children[0].remove();
+        localStorage.removeItem('users')
       }
     });
   }
