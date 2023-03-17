@@ -32,6 +32,7 @@ const listCount = createElement("span");
 let completeCount = 0;
 let allCount = 2;
 const date = new Date();
+let todosArray = [];
 
 const listCountCompleted = listCount.cloneNode(true);
 const listCountAll = listCount.cloneNode(true);
@@ -56,7 +57,7 @@ listCountCompleted.innerText = `Completed: ${completeCount}`;
 bottomButtonShowCompleted.innerText = "Show Comleted";
 topButtonDeleteLast.innerText = "Delete Last";
 topButtonDeleteAll.innerText = "Delete All";
-listCountAll.innerText = `All: ${allCount}`;
+listCountAll.innerText = `All: ${toDoBody.childElementCount}`;
 listDate.innerText = date.toLocaleString();
 bottomButtonShowAll.innerText = "Show All";
 topButtonAdd.innerText = "Add";
@@ -66,10 +67,28 @@ function createElement(tagName, options) {
   return element;
 }
 
+const pushInStorage = (item, keyName, keyValue) => {
+  todosArray.unshift(item);
+  localStorage.setItem(keyName, JSON.stringify(keyValue));
+};
+
+const removeItemFromStorage = (keyName, id) => {
+  const items = JSON.parse(localStorage.getItem(keyName));
+  const removebleItem = items.find((item) => {
+    return item.todoId === id;
+  });
+  items.splice(items.indexOf(removebleItem), 1);
+  todosArray.splice(items.indexOf(removebleItem), 1 );
+  localStorage.setItem("todoItems", JSON.stringify(items));
+};
+
 const todoDeleteAll = () => {
   for (let i = toDoBody.childElementCount; i > 0; i--) {
     toDoBody.children[0].remove();
   }
+  localStorage.removeItem("todoItems");
+  todosArray = [];
+
   totalCount();
   completedCount();
 };
@@ -87,9 +106,21 @@ const todoAdd = () => {
     topInput.value === ""
       ? (listText.innerText = "ToDo Text")
       : (listText.innerText = `${topInput.value}`);
-    const date = new Date();
-    listDate.innerText = date.toLocaleString();
+    const date = new Date().toLocaleString();
+    const newId =
+      Math.random().toString(16).slice(2) + Math.random().toString(16).slice(2);
+    const todoItemForStorage = Object.assign(
+      {},
+      {
+        todoValue: topInput.value,
+        todoDate: date,
+        todoId: newId,
+      }
+    );
+    pushInStorage(todoItemForStorage, "todoItems", todosArray);
+    listDate.innerText = date;
     const listWrapperClone = listWrapper.cloneNode(true);
+    listWrapperClone.id = newId;
     toDoBody.insertAdjacentElement("afterbegin", listWrapperClone);
     topInput.value = "";
     totalCount();
@@ -112,7 +143,6 @@ const completedCount = () => {
   const quantity = Array.from(
     toDoBody.querySelectorAll(".root__wrapper")
   ).filter((item) => {
-    console.log();
     return item.style.background === "green";
   });
 
@@ -238,12 +268,15 @@ const correctTodo = (element) => {
   };
   input.addEventListener("blur", backToSpan);
   input.addEventListener("keydown", backToSpanKey);
-  console.log(input);
 };
 
 const closeTodo = (elem) => {
-  const target = elem.target;
-  if (target.className !== "root__button") return;
+  if (elem.target.className !== "root__button") return;
+  console.log(elem.target.parentElement.parentElement.id);
+  removeItemFromStorage(
+    "todoItems",
+    elem.target.parentElement.parentElement.id
+  );
   elem.target.parentElement.parentElement.remove();
   completedCount();
   totalCount();
@@ -269,10 +302,17 @@ listBox.append(listButton, listDate);
 
 root.append(toDoHeader, toDoBody);
 
-for (let i = 0; i < allCount; ++i) {
-  const listWrapperClone = listWrapper.cloneNode(true);
-  toDoBody.append(listWrapperClone);
-  listText.innerText = listText.innerText;
+if (localStorage.getItem("todoItems")) {
+  todosArray = JSON.parse(localStorage.getItem("todoItems"));
+  for (const todo of todosArray) {
+    listText.innerText = todo.todoValue;
+    listDate.innerText = todo.todoDate;
+    listWrapper.id = todo.todoId;
+    const listWrapperClone = listWrapper.cloneNode(true);
+    toDoBody.append(listWrapperClone);
+  }
+  totalCount();
+  completedCount();
 }
 
 const todoHead = document.getElementById("rootHeader");
