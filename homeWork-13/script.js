@@ -1,55 +1,19 @@
-//first task
+import { printPrimes } from './modules/module-1.js';
+import { diffArrays } from './modules/module-2.js';
+import { calcAvgAge } from './modules/module-3.js';
+import { findPalindromes } from './modules/module-4.js';
+import { factorial } from './modules/module-5.js';
 
-const users = ["Bob", "John", "Anna", "Veronika", ["Rick"]];
-const [first, , ...rest] = users;
-console.log(first);
-console.log(rest);
 
-//second task
-const user = {
-  name: "Alex",
-  lastName: "McCallister",
-  birthday: "12.04.1994",
-  sex: "male",
-  adress: null,
-  location: {
-    country: "England",
-    city: "London",
-  },
-  email: null,
-};
+const people = [
+    { name: "John", age: 25 },
+    { name: "Alice", age: 32 },
+    { name: "Bob", age: 18 },
+  ];
 
-const {
-  name,
-  lastName,
-  birthday,
-  sex,
-  adress,
-  location: { country, city },
-  email,
-} = user;
-
-console.log(
-  `name: ${name}, lastName: ${lastName}, birthday: ${birthday}, sex: ${sex}, adress: ${adress}, country: ${country}, city: ${city}, email: ${email}`
-);
-
-//third task
-const players1 = ["Pozitiv4ik", "Delphinate", "MissLuck"];
-const players2 = ["NaGiBatoR", "SunnyGirl", "Lion"];
-
-const commonPlayers = [...players1, ...players2];
-console.log(commonPlayers);
-
-//fourth task
-function getFootballerInfo({ name, age, team, salary }) {
-  return `Меня зовут ${name}, мне ${age}. Я играю за ${team}, и моя зарплата ${salary}.`;
-}
-
-const footballer = {
-  name: "Лионель Месси",
-  age: 34,
-  team: "Пари Сен-Жермен",
-  salary: "30 миллионов евро в год",
-};
-
-console.log(getFootballerInfo(footballer));
+  
+printPrimes([1,3,4,9,10,1.5,1.9,228,3.35]);
+diffArrays(['Привет', null, 2, 4, 5] , [ 2, 15, 23, 'Привет']);
+calcAvgAge(people);
+findPalindromes('abba, kimiko, alla');
+factorial(10);
