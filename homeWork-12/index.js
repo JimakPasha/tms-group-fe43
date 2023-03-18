@@ -49,6 +49,7 @@ function createUser(firstName, surname, age){
 // Вешаем событие на кнопку "очистить"
 resetButton.addEventListener('click', () =>{
     usersList.innerHTML = '';
+    localStorage.clear();
     resetList();
 });
 
