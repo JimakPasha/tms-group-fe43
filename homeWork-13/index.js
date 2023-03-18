@@ -47,12 +47,12 @@ const footballer = {
     salary: '100000 GPB',
 }
 
-function createString(){
-    const {name, age, team, salary} = footballer;
+function createString(player){
+    const {name, age, team, salary} = player;
     return console.log(`Меня зовут ${name}, мне ${age}. Я играю за ${team}, и моя зарплата ${salary}.`);
 }
 
-createString();
+createString(footballer);
 
 
 
