@@ -1,0 +1,20 @@
+import { destructingTest } from "./destructuring.js";
+import { createButton } from "./modules-test/modul-1.js";
+import { changeBackground } from "./modules-test/modul-2.js";
+import { themeCheck } from "./modules-test/modul-3.js";
+import { count } from "./modules-test/modul-4.js";
+import { clearCount } from "./modules-test/modul-5.js";
+import { timeAlert } from "./modules-test/modul-6.js";
+import { sayHello } from "./modules-test/modul-7.js";
+
+destructingTest(false);
+createButton("Замена фона", "bg-toggle");
+createButton("Показать время", "time-Alert");
+createButton("Счетчик", "create-Count");
+createButton("Отчистить счетчик", "clear-Count");
+changeBackground();
+themeCheck();
+count();
+clearCount();
+timeAlert();
+sayHello();
