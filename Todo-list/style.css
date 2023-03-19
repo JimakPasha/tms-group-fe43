@@ -5,7 +5,7 @@
           box-sizing: border-box;
 }
 
-.root__input, .root__wrapper, .root__button, .root {
+.root__wrapper, .root__button, .root, .root__search-input, .root__input {
   border: 2px black solid;
   border-radius: 10px;
 }
@@ -14,6 +14,12 @@
   width: 100%;
   text-align: center;
   background: white;
+}
+
+.root__search-input, .root__input {
+  width: 100%;
+  padding: 10px 10px;
+  text-align: center;
 }
 
 .root {
@@ -94,11 +100,6 @@
   margin: 0 10px;
   cursor: text;
 }
-.root__input {
-  width: 100%;
-  padding: 10px 10px;
-  text-align: center;
-}
 .root__input::-webkit-input-placeholder {
   text-align: center;
 }
@@ -113,4 +114,7 @@
 }
 .root__input::placeholder {
   text-align: center;
+}
+.complete {
+  background: green;
 }

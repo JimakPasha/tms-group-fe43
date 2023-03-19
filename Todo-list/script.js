@@ -33,6 +33,7 @@ let completeCount = 0;
 let allCount = 2;
 const date = new Date();
 let todosArray = [];
+let completedTodosArray = [];
 
 const listCountCompleted = listCount.cloneNode(true);
 const listCountAll = listCount.cloneNode(true);
@@ -49,6 +50,7 @@ const headerRowBottom = headerRowTop.cloneNode(true);
 const topButtonAdd = listButton.cloneNode(true);
 
 bottomInput.setAttribute("placeholder", "Search ...");
+bottomInput.setAttribute("class", "root__search-input");
 listCountCompleted.setAttribute("id", "completeCount");
 listButton.setAttribute("id", "showAllButton");
 listCountAll.setAttribute("id", "countAll");
@@ -78,8 +80,17 @@ const removeItemFromStorage = (keyName, id) => {
     return item.todoId === id;
   });
   items.splice(items.indexOf(removebleItem), 1);
-  todosArray.splice(items.indexOf(removebleItem), 1 );
+  todosArray.splice(items.indexOf(removebleItem), 1);
   localStorage.setItem("todoItems", JSON.stringify(items));
+};
+
+const completeTodoForLS = (keyName, id) => {
+  const items = JSON.parse(localStorage.getItem(keyName));
+  const completeItem = items.map((item) => {
+    return item.todoId === id;
+  });
+  console.log(completeItem);
+  items.indexOf()
 };
 
 const todoDeleteAll = () => {
@@ -95,6 +106,8 @@ const todoDeleteAll = () => {
 
 const todoDeleteLast = () => {
   toDoBody.children[toDoBody.childElementCount - 1].remove();
+  todosArray.pop();
+  localStorage.setItem("todoItems", JSON.stringify(todosArray));
   totalCount();
   completedCount();
 };
@@ -115,6 +128,7 @@ const todoAdd = () => {
         todoValue: topInput.value,
         todoDate: date,
         todoId: newId,
+        todoComplete: false,
       }
     );
     pushInStorage(todoItemForStorage, "todoItems", todosArray);
@@ -143,7 +157,7 @@ const completedCount = () => {
   const quantity = Array.from(
     toDoBody.querySelectorAll(".root__wrapper")
   ).filter((item) => {
-    return item.style.background === "green";
+    return item.className.includes("complete");
   });
 
   count.innerText = `Completed: ${quantity.length}`;
@@ -204,35 +218,51 @@ const todoFilter = (e) => {
 };
 
 const todoFiltered = (element) => {
-  if (element.target.className !== "root__input") return;
+  if (element.target.className !== "root__search-input") return;
 
   element.target.addEventListener("input", todoFilter);
 };
 
+// const completeTodo = (element) => {
+//   const target = element.target;
+//   if (target.className !== "root__wrapper") return;
+//   const todoChecked = ttarge.querySelector(".root__check-box");
+//   const todoCheckedText = target.querySelector(".root__text");
+//   if (target.className === "root__wrapper completed") {
+//     target.classList.remove("completed");
+//   }
+//   if (target.style.background === "green") {
+//     todoCheckedText.style.textDecoration = "none";
+//     target.style.background = "none";
+//     target.style.display = "flex";
+//     todoChecked.checked = false;
+//     completedCount();
+//     totalCount();
+//   } else {
+//     todoCheckedText.style.textDecoration = "line-through";
+//     target.style.background = "green";
+//     target.style.display = "none";
+//     todoChecked.checked = true;
+//     toDoBody.insertAdjacentElement("beforeend", target);
+//     completedCount();
+//     totalCount();
+//   }
+// };
+
 const completeTodo = (element) => {
   const target = element.target;
-  if (target.className !== "root__wrapper") return;
+  if (!target.className.includes("root__wrapper")) return;
   const todoChecked = target.querySelector(".root__check-box");
   const todoCheckedText = target.querySelector(".root__text");
-  if (target.className === "root__wrapper completed") {
-    target.classList.remove("completed");
-  }
-  if (target.style.background === "green") {
-    todoCheckedText.style.textDecoration = "none";
-    target.style.background = "none";
-    target.style.display = "flex";
-    todoChecked.checked = false;
-    completedCount();
-    totalCount();
-  } else {
-    todoCheckedText.style.textDecoration = "line-through";
-    target.style.background = "green";
-    target.style.display = "none";
+  target.classList.toggle("complete");
+  console.log(target.id);
+  if (target.className.includes("complete")) {
     todoChecked.checked = true;
-    toDoBody.insertAdjacentElement("beforeend", target);
-    completedCount();
-    totalCount();
+  } else {
+    todoChecked.checked = false;
   }
+  completeTodoForLS("todoItems", target.id);
+  completedCount();
 };
 
 const correctTodo = (element) => {
@@ -272,11 +302,8 @@ const correctTodo = (element) => {
 
 const closeTodo = (elem) => {
   if (elem.target.className !== "root__button") return;
-  console.log(elem.target.parentElement.parentElement.id);
-  removeItemFromStorage(
-    "todoItems",
-    elem.target.parentElement.parentElement.id
-  );
+  const elemId = elem.target.parentElement.parentElement.id;
+  removeItemFromStorage("todoItems", elemId);
   elem.target.parentElement.parentElement.remove();
   completedCount();
   totalCount();
