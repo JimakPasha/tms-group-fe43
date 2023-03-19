@@ -32,10 +32,11 @@ console.log(users);
         birthday, 
         sex, 
         adress, 
-        location: {country, city}
+        location: {country, city},
+        email
     } = user;
 
-    console.log(name, lastName, birthday, sex, adress, country, city);
+    console.log(name, lastName, birthday, sex, adress, country, city, email);
 }
 
 // 3. Объедините два массива с помощью spread оператора
@@ -44,7 +45,7 @@ const players1 = ['Pozitiv4ik', 'Delphinate', 'MissLuck'];
 const players2 = ['NaGiBatoR', 'SunnyGirl', 'Lion'];
 
 const commonPlayers = [...players1, ...players2]; // объединяем массив
-console.log(commonPlayers); 
+console.log(commonPlayers);
 
 
 // 4. Напишите функцию которая
@@ -61,9 +62,12 @@ console.log(commonPlayers);
         salary: '1 000 000 000',
     }
     
-    const {name, age, team, salary} = soccerPlayer
-    console.log(`Меня зовут ${name}, мне ${age}. Я играю за ${team}, моя зарплата ${salary}`);
-}
+    function players() {
+      const {name, age, team, salary} = soccerPlayer
+      console.log(`Меня зовут ${name}, мне ${age}. Я играю за ${team}, моя зарплата ${salary}`);
+    };
+    players();
+};
 
 /* 5. Практика модулей
 
