@@ -1,0 +1,129 @@
+*{
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+#root{
+    margin-top: 30px;
+}
+.container{
+    margin:0 auto;
+    padding:0 10px;
+    max-width: 1220px;
+}
+
+.body{
+    display: flex;
+    justify-content: center;
+    &__form{
+        border: 1px solid black;
+        width: 400px;
+        min-height: 200px;
+        background: rgb(255, 255, 201);
+        border-radius: 5px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+    }
+    //interName
+    &__interName{
+        display: flex;
+        justify-content: space-between;
+        @media screen and (max-width:400px){
+            flex-direction: column;
+        }
+    }
+
+    &__inputName{
+        cursor: pointer;
+        padding: 0 0 0 5px;
+        @media screen and (max-width:400px){
+            max-width: 180px;
+        }
+    }
+
+    //interSurName
+    &__interSurName{
+        display: flex;
+        justify-content: space-between;
+        @media screen and (max-width:400px){
+            flex-direction: column;
+        }
+    }
+    &__inputSurName{
+       cursor: pointer;
+       padding: 0 0 0 5px;
+       @media screen and (max-width:400px){
+            max-width: 180px;
+        }
+    }
+
+    //interAge
+    &__interAge{
+        display: flex;
+        justify-content: space-between;
+        @media screen and (max-width:400px){
+            flex-direction: column;
+        }
+    }
+    &__inputAge{
+       cursor: pointer;
+       max-width: 171px;
+       width: 100%;
+       padding-left: 5px;
+       @media screen and (max-width:400px){
+            max-width: 180px;
+        }
+    }
+
+    //buttons
+    &__buttons{
+        margin-top: 10px;
+        display:flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        @media screen and (max-width:400px){
+            justify-content: flex-start;
+            column-gap: 20px;
+        }
+    }
+    &__add{
+        background: rgb(87, 87, 255);
+        border: none;
+        min-height: 30px;
+        padding: 0 10px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover{
+            background: rgb(141, 141, 255);
+        }
+        &_disabled{
+            background: gray;
+            &:hover{
+                background: rgb(111, 111, 111);
+            }
+        } 
+    }
+
+    &__person{
+        background: white;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    &__deleteAll{
+        background: rgb(87, 87, 255);
+        border: none;
+        min-height: 30px;
+        padding: 0 10px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover{
+            background: rgb(141, 141, 255);
+        }   
+    }
+}
