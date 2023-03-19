@@ -100,8 +100,11 @@
         &:hover{
             background: rgb(141, 141, 255);
         }
-        &_desabled{
+        &_disabled{
             background: gray;
+            &:hover{
+                background: rgb(111, 111, 111);
+            }
         } 
     }
 

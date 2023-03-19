@@ -1,5 +1,6 @@
 import {createElement} from './createElement.js';
 import {clearForm} from './clearForm.js';
+import { removeDisabled } from './removeDisabled.js';
 
 let root = document.getElementById('root');
 
@@ -57,12 +58,14 @@ inputAge.setAttribute('min','1');
 inputAge.setAttribute('max','120');
 interAge.insertAdjacentElement('beforeend',inputAge);
 
+inputAge.addEventListener('click',removeDisabled)
+
 //buttons-----------------------------------------------------------------------------------------
 const buttons = createElement('div',{classList:'body__buttons'});
 form.insertAdjacentElement('beforeend',buttons);
 
 //add
-let add = createElement('button',{classList:'body__add',innerText:'Создать'});
+export let add = createElement('button',{classList:'body__add',innerText:'Создать'});
 
 let listPersons = []
 
@@ -75,7 +78,7 @@ if(localStorage.getItem('listPersons')){
         form.insertAdjacentElement('beforeend',element)
     })
 }
-                                                                               
+ 
 function addPerson(){
     if( inputName.value.trim() === ""){
         alert('Введите имя!');
@@ -86,10 +89,10 @@ function addPerson(){
     else if(inputAge.value.trim() <1){
         alert('Введите ваш возраст!');
     }
-    else if(inputAge.value < 18){
-        add.classList.add('body__add_desabled');
+    else if(inputAge.value<18){
         add.setAttribute('disabled','disabled');
-        add.innerText=`заблокировано`
+        add.classList.add('body__add_disabled');
+        add.innerText=`Заблокировано`;
     }
     else{
         const objItem = {}
