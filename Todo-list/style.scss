@@ -96,4 +96,18 @@
 }
 .complete {
   background: green;
+  display: none;
+  & > .root__text{
+    text-decoration: line-through;
+  }
+}
+.show {
+  display: flex;
+}
+.hide-others {
+  display: none;
+}
+.find {
+  background: purple;
+  display: flex;
 }

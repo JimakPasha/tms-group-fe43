@@ -117,4 +117,25 @@
 }
 .complete {
   background: green;
+  display: none;
+}
+.complete > .root__text {
+  text-decoration: line-through;
+}
+
+.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.hide-others {
+  display: none;
+}
+
+.find {
+  background: purple;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }

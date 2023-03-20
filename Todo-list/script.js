@@ -33,7 +33,6 @@ let completeCount = 0;
 let allCount = 2;
 const date = new Date();
 let todosArray = [];
-let completedTodosArray = [];
 
 const listCountCompleted = listCount.cloneNode(true);
 const listCountAll = listCount.cloneNode(true);
@@ -86,11 +85,17 @@ const removeItemFromStorage = (keyName, id) => {
 
 const completeTodoForLS = (keyName, id) => {
   const items = JSON.parse(localStorage.getItem(keyName));
-  const completeItem = items.map((item) => {
+  const todoItems = document.getElementsByClassName("root__wrapper");
+  const completeItem = items.filter((item) => {
     return item.todoId === id;
-  });
-  console.log(completeItem);
-  items.indexOf()
+  })[0];
+  const index = items.indexOf(completeItem);
+  if (todoItems[index].className.includes("complete")) {
+    items[index].todoComplete = true;
+  } else {
+    items[index].todoComplete = false;
+  }
+  localStorage.setItem("todoItems", JSON.stringify(items));
 };
 
 const todoDeleteAll = () => {
@@ -126,9 +131,9 @@ const todoAdd = () => {
       {},
       {
         todoValue: topInput.value,
+        todoComplete: false,
         todoDate: date,
         todoId: newId,
-        todoComplete: false,
       }
     );
     pushInStorage(todoItemForStorage, "todoItems", todosArray);
@@ -167,8 +172,10 @@ const showCompleted = () => {
   const allElement = toDoBody.querySelectorAll(".root__wrapper");
 
   allElement.forEach((item) => {
-    if (item.style.background === "green") {
-      item.style.display = "flex";
+    if (item.className.includes("complete")) {
+      item.classList.toggle("show");
+    } else {
+      item.classList.toggle("hide-others");
     }
   });
 };
@@ -177,43 +184,35 @@ const showAllBtn = () => {
   const allElement = toDoBody.querySelectorAll(".root__wrapper");
 
   allElement.forEach((item) => {
-    item.style.display = "flex";
+    if (item.className.includes("hide-others")) {
+      item.classList.remove("hide-others");
+      item.classList.add("show");
+    }
+    item.classList.toggle("show");
   });
 
   completedCount();
   totalCount();
 };
 
-const todoFilter = (e) => {
+const todoFilter = () => {
   const bodyItems = Array.from(toDoBody.childNodes);
   const inputFindValue = bottomInput.value;
-
-  const isSame = (item) => {
-    if (
-      inputFindValue.toLowerCase() === "" ||
-      inputFindValue.toLowerCase() === " "
-    )
-      return;
-    return item.textContent
-      .toLowerCase()
-      .includes(inputFindValue.toLowerCase());
-  };
-
-  const isSearchedItem = (item) => {
-    const filteredItems = Array.from(item.childNodes).filter(isSame);
-    if (filteredItems.length == 0) return;
-    return filteredItems;
-  };
-
-  const findedItem = bodyItems.filter(isSearchedItem);
-
   bodyItems.forEach((item) => {
-    item.style.background = "none";
-  });
-
-  findedItem.forEach((item) => {
-    item.style.background = "pink";
-    toDoBody.insertAdjacentElement("afterbegin", item);
+    item.childNodes.forEach((item) => {
+      if (!item.className.includes("root__text")) return;
+      if (inputFindValue === "") {
+        item.parentElement.classList.remove("find");
+        item.parentElement.classList.remove("hide-others");
+      } else if (
+        inputFindValue.toLowerCase() === item.textContent.toLowerCase()
+      ) {
+        item.parentElement.classList.add("find");
+      } else {
+        item.parentElement.classList.remove("find");
+        item.parentElement.classList.add("hide-others");
+      }
+    });
   });
 };
 
@@ -223,39 +222,11 @@ const todoFiltered = (element) => {
   element.target.addEventListener("input", todoFilter);
 };
 
-// const completeTodo = (element) => {
-//   const target = element.target;
-//   if (target.className !== "root__wrapper") return;
-//   const todoChecked = ttarge.querySelector(".root__check-box");
-//   const todoCheckedText = target.querySelector(".root__text");
-//   if (target.className === "root__wrapper completed") {
-//     target.classList.remove("completed");
-//   }
-//   if (target.style.background === "green") {
-//     todoCheckedText.style.textDecoration = "none";
-//     target.style.background = "none";
-//     target.style.display = "flex";
-//     todoChecked.checked = false;
-//     completedCount();
-//     totalCount();
-//   } else {
-//     todoCheckedText.style.textDecoration = "line-through";
-//     target.style.background = "green";
-//     target.style.display = "none";
-//     todoChecked.checked = true;
-//     toDoBody.insertAdjacentElement("beforeend", target);
-//     completedCount();
-//     totalCount();
-//   }
-// };
-
 const completeTodo = (element) => {
   const target = element.target;
   if (!target.className.includes("root__wrapper")) return;
   const todoChecked = target.querySelector(".root__check-box");
-  const todoCheckedText = target.querySelector(".root__text");
   target.classList.toggle("complete");
-  console.log(target.id);
   if (target.className.includes("complete")) {
     todoChecked.checked = true;
   } else {
@@ -268,36 +239,46 @@ const completeTodo = (element) => {
 const correctTodo = (element) => {
   const target = element.target;
   if (target.className !== "root__text") return;
-  const parentElem = target.parentElement.childNodes;
-  let targetContent = target.textContent;
-  const targetSource = target.outerHTML;
-  const inputElement = createElement("input", {
+
+  const input = createElement("input", {
     className: "root__input",
     type: "text",
     placeholder: "Enter todo text ...",
+    value: target.textContent,
   });
-  target.outerHTML = inputElement.outerHTML;
-  const inputArray = Array.from(parentElem).filter((item) => {
-    return item.className === "root__input";
-  });
-  const input = inputArray[0];
+
+  target.insertAdjacentElement("afterend", input);
+  target.remove();
   input.focus();
-  input.value = targetContent;
+
   const backToSpan = () => {
-    targetContent = input.value;
-    input.outerHTML = targetSource;
-    const textArray = Array.from(parentElem).filter((item) => {
-      return item.className === "root__text";
+    if (input.value === "") {
+      input.value = "Emty todo";
+    }
+    target.textContent = input.value;
+    input.insertAdjacentElement("afterend", target);
+    input.remove();
+    const date = new Date();
+    target.parentElement.lastChild.lastChild.textContent =
+      date.toLocaleString();
+    const item = todosArray.filter((item) => {
+      return item.todoId === target.parentElement.id;
+    })[0];
+    Object.assign(item, {
+      todoValue: target.textContent,
+      todoDate: date.toLocaleString(),
     });
-    const text = textArray[0];
-    text.textContent = targetContent;
+    localStorage.setItem("todoItems", JSON.stringify(todosArray));
+    console.log(todosArray, item);
   };
-  const backToSpanKey = (e) => {
+
+  const backToSpanAtKey = (e) => {
     if (e.keyCode !== 13) return;
     backToSpan();
   };
+
   input.addEventListener("blur", backToSpan);
-  input.addEventListener("keydown", backToSpanKey);
+  input.addEventListener("keydown", backToSpanAtKey);
 };
 
 const closeTodo = (elem) => {
@@ -335,6 +316,13 @@ if (localStorage.getItem("todoItems")) {
     listText.innerText = todo.todoValue;
     listDate.innerText = todo.todoDate;
     listWrapper.id = todo.todoId;
+    if (todo.todoComplete) {
+      listWrapper.classList.add("complete");
+      listWrapper.firstChild.checked = todo.todoComplete;
+    } else {
+      listWrapper.classList.remove("complete");
+      listWrapper.firstChild.checked = todo.todoComplete;
+    }
     const listWrapperClone = listWrapper.cloneNode(true);
     toDoBody.append(listWrapperClone);
   }
