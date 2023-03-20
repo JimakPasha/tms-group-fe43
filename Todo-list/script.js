@@ -258,18 +258,21 @@ const correctTodo = (element) => {
     target.textContent = input.value;
     input.insertAdjacentElement("afterend", target);
     input.remove();
+
     const date = new Date();
     target.parentElement.lastChild.lastChild.textContent =
       date.toLocaleString();
+
     const item = todosArray.filter((item) => {
       return item.todoId === target.parentElement.id;
     })[0];
+
     Object.assign(item, {
       todoValue: target.textContent,
       todoDate: date.toLocaleString(),
     });
+
     localStorage.setItem("todoItems", JSON.stringify(todosArray));
-    console.log(todosArray, item);
   };
 
   const backToSpanAtKey = (e) => {
