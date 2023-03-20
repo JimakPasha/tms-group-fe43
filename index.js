@@ -6,12 +6,12 @@ const createBtn = document.querySelector ('.createBtn');
 const clearBtn = document.querySelector ('.clearBtn');
 
 // Возрастное ограничение
-userAge.addEventListener ('input', () => {
+userAge.addEventListener('input', () => {
     createBtn.disabled = userAge.value < 18;
 }); 
 
 
-createBtn.addEventListener ('click', () => {
+createBtn.addEventListener('click', () => {
 
     const itemObj = {}; // ---------------------------------------------------------------------- Создаем пустой объект
 
@@ -43,11 +43,11 @@ clearBtn.addEventListener ('click', () => {
 // Добавляем данные из LS в лишки
 let listArr = []; 
 
-if (localStorage.getItem('userInfo')){
-    listArr = JSON.parse(localStorage.getItem('userInfo'));
+if (localStorage.getItem('listArr')){
+    listArr = JSON.parse(localStorage.getItem('listArr'));
     listArr.forEach((item) => {
         const element = document.createElement('li');
-        element.innerText = `Пользователь: ${userName.value} ${userSurname.value}, ${userAge.value} лет`;
+        element.innerText = `Пользователь: ${item.name} ${item.surname}, ${item.age} лет`;
         userInfo.append(element);
     });
 
