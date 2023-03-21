@@ -39,14 +39,14 @@ if (localStorage.getItem('listAge')) {
    });
 };
 
-create.addEventListener('click', () => {
-   if (age.value < 18) {
-      create.disabled = true;
-   } else {
-      create.disabled = false;
-   }
+create.disabled = true;
+age.addEventListener('input', () => {
+  if (age.value < 18) {
+    create.disabled = true;
+  } else {
+    create.disabled = false;
+  }
 });
-//! Не понимаю, как сделать, чтобы проверяло возраст до ввода
 
 create.addEventListener('click', () => {
    
