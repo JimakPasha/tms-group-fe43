@@ -3,7 +3,6 @@
    padding: 0;
    box-sizing: border-box;
 }
-
 .wrapper_task1 {
    display: flex;
    justify-content: center;
@@ -11,7 +10,6 @@
    gap: 30px;
    margin: 50px;
 }
-
 .wrapper_task2 {
    display: flex;
    justify-content: center;
@@ -19,7 +17,6 @@
    gap: 30px;
    margin: 50px;
 }
-
 .wrapper_task3 {
    display: flex;
    justify-content: center;
@@ -27,7 +24,6 @@
    gap: 30px;
    margin: 50px;
 }
-
 .wrapper_task4 {
    display: flex;
    justify-content: center;
@@ -35,7 +31,6 @@
    gap: 5px;
    margin: 50px;
 }
-
 .wrapper_task5{
    display: flex;
    justify-content: center;
@@ -43,7 +38,6 @@
    gap: 30px;
    margin: 50px;
 }
-
 button {
    background-color: lightsalmon;
    border: 2px solid olive;
@@ -52,7 +46,6 @@ button {
    padding: 10px;
    border-radius: 5px;
 }
-
 .item{
    background-color: lightsalmon;
    border: 2px solid olive;
@@ -60,7 +53,6 @@ button {
    padding: 10px;
    border-radius: 5px;
 }
-
 .olive {
    background-color: olive;
  }
