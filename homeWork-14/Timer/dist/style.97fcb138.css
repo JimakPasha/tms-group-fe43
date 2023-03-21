@@ -1,0 +1,12 @@
+.count {
+  width: max-content;
+  margin: 200px auto;
+}
+.count > * {
+  font-size: 35px;
+}
+.count > span {
+  margin: 10px;
+}
+
+/*# sourceMappingURL=/style.97fcb138.css.map */

@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAAA;EACE;EACA;;AACA;EACE;;AAEF;EACE","file":"style.97fcb138.css","sourceRoot":"..\\src","sourcesContent":[".count {\r\n  width: max-content;\r\n  margin: 200px auto;\r\n  & > * {\r\n    font-size: 35px;\r\n  }\r\n  & > span {\r\n    margin: 10px;\r\n  }\r\n}\r\n"]}

@@ -1,0 +1,10 @@
+.count {
+  width: max-content;
+  margin: 200px auto;
+  & > * {
+    font-size: 35px;
+  }
+  & > span {
+    margin: 10px;
+  }
+}
