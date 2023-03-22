@@ -1,0 +1,12 @@
+import { test, test2, text3 } from "./modules/module1.js";
+console.log(test());
+console.log(test2());
+console.log(text3());
+import omnomnom from "./modules/module2.js";
+import {test4} from "./modules/module2.js";
+import {test5} from "./modules/module2.js";
+import {aaaaaa} from "./modules/module2.js";
+omnomnom();
+console.log(test4());
+console.log(test5());
+console.log(aaaaaa());
