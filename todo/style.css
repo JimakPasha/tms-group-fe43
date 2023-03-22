@@ -6,11 +6,11 @@
     font-size: 14px;
 }
 
-#root{
+#root, #container{
     margin: 0 auto;
     margin-top: 10%;
     width: 600px;
-    height: 460px;
+    /* height: 460px; */
     background-color: rgb(217, 217, 217);
     border-radius: 20px;
     border: 3px solid black;
@@ -38,7 +38,7 @@
 .wrap{
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin: 20px 0;
     gap: 20px;
 }
 
@@ -51,7 +51,7 @@
     cursor: pointer;
     margin-right: 10px;
 }
-.closeBtn{
+.closeBtn, .closeBtn3{
     padding: 10px 20px;
     border-radius: 10px;
     border: 3px solid black;
@@ -71,7 +71,7 @@
     background-color: #FFFFFF;
     color: #D5D5D5;
 }
-.innerBig, .innerBig2{
+.innerBig, .innerBig2, .innerBig3{
     margin: 36px;
     padding: 35px 10px;
     border-radius: 16px;
