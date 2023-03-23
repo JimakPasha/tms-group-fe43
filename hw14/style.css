@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.timerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer {
+    font-size: 48px;
+    margin: 20px 0;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 24px;
+    margin: 10px;
+}
