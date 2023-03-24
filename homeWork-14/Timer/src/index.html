@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.scss" />
+    <title>Timer</title>
+  </head>
+  <body>
+    <style>
+      .count {
+        width: max-content;
+        margin: 200px auto;
+      }
+      .count > * {
+        font-size: 35px;
+      }
+      .count > span {
+        margin: 10px;
+      }
+    </style>
+    <article class="count">
+      <button class="count__start">start</button>
+      <span class="count__counter"></span>
+      <button class="count__stop">stop</button>
+    </article>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
