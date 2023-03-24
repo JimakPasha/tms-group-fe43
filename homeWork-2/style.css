@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#box{
+    margin: 30px 0 0 20px;
+}
+#box2{
+    /* background-color: aqua; */
+    max-width: 95.66px;
+    border-radius: 20px;
+    margin-left: 20px;
+}
+
+.btn1, .btn2, .btn3, .btn4, .btn6 {
+    border: 3px solid transparent;
+    border-radius: 20px;
+    padding: 10px 30px;
+    background-color: rgb(221, 136, 153);
+    font-weight: 600;
+
+}
+
+.btn1:hover, .btn2:hover, .btn3:hover, .btn4:hover, .btn5:hover, .btn6:hover{
+    background-color: rgb(255, 172, 172);
+    box-shadow: 0px 0px 22px rgb(255, 1, 1);
+    transition: all 0.3s;
+    color: white;
+    font-weight: 600;
+}
+
+p{
+    padding-bottom: 10px;
+}
+
+.btn5{
+    background-color: white;
+    border-radius: 20px;
+    border: 3px solid transparent;
+    padding: 10px 30px;
+    font-weight: 600;
+    box-shadow: 0px 0px 12px rgb(221, 136, 153);
+}
+
+.btn5:hover{
+    transition: background-color 0.9s, 
+                box-shadow 0.3s;
+}
+
+.wrapper{
+    max-width: 404px;
+    max-height: 404px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 20px;
+    gap: 1px;
+}
+ .item {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    cursor: pointer;
+    
+}
+.black{
+    background-color: rgb(255, 172, 172);
+}
+
+.wrap{
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 6px;
+    text-align: center;
+}
