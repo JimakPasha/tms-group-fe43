@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cards</title>
+  </head>
+  <body>
+    <style>
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+        row-gap: 50px;
+        margin: auto;
+        max-width: 1400px;
+      }
+      .cards__wrapper {
+        max-width: 400px;
+        max-height: 400px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        box-shadow: 0 0 10px gray;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      .cards__image-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 0 0 5px 5px;
+      }
+      .cards__image {
+        width: 100%;
+      }
+      .cards__avatar {
+        border-radius: 50%;
+        box-shadow: 0 0 5px black;
+        margin: 5px;
+      }
+      .cards__name {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .cards__content-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid gray;
+      }
+    </style>
+    <section class="cards" id="cards-body"></section>
+    <script src="index.js"></script>
+  </body>
+</html>
