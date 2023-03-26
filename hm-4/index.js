@@ -7,7 +7,7 @@ let startNum = 0;
 startTimer.addEventListener('click', () =>{
     const timer = setInterval(() => {
         startNum++;
-        numberTimer.innerHTML = startNum;
+        numberTimer.innerHTML = `${startNum} sec`;
        
 },1000);
   stopTimer.addEventListener('click', () => {
