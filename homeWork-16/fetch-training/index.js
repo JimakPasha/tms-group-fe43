@@ -25,23 +25,56 @@ buttons.addEventListener("click", (e) => {
   });
 });
 
-sortPos.addEventListener("click", () => {});
+sortPos.addEventListener("click", () => {
+  sortingData("asc");
+});
 
-sortNeg.addEventListener("click", () => {});
+sortNeg.addEventListener("click", () => {
+  sortingData("desc");
+});
 
 nexPage.addEventListener("click", () => {
   currentPage++;
-  getTLotRData(currentEndpoint, currentPage).then((items) => {
+  getTLotRData(currentEndpoint, currentPage, currentSort).then((items) => {
     renderData(currentEndpoint, items);
   });
 });
 
 prevPage.addEventListener("click", () => {
   currentPage--;
-  getTLotRData(currentEndpoint, currentPage).then((items) => {
+  getTLotRData(currentEndpoint, currentPage, currentSort).then((items) => {
     renderData(currentEndpoint, items);
   });
 });
+
+function sortingData(sortType) {
+  let sort = "";
+  if (currentEndpoint === "book") {
+    sort = `name:${sortType}`;
+    currentSort = sort;
+    getTLotRData(currentEndpoint, currentPage, sort).then((items) => {
+      renderData(currentEndpoint, items);
+    });
+  } else if (currentEndpoint === "movie") {
+    sort = `name:${sortType}`;
+    currentSort = sort;
+    getTLotRData(currentEndpoint, currentPage, sort).then((items) => {
+      renderData(currentEndpoint, items);
+    });
+  } else if (currentEndpoint === "character") {
+    sort = `name:${sortType}`;
+    currentSort = sort;
+    getTLotRData(currentEndpoint, currentPage, sort).then((items) => {
+      renderData(currentEndpoint, items);
+    });
+  } else if (currentEndpoint === "quote") {
+    sort = `dialog:${sortType}`;
+    currentSort = sort;
+    getTLotRData(currentEndpoint, currentPage, sort).then((items) => {
+      renderData(currentEndpoint, items);
+    });
+  }
+}
 
 function renderData(endpoint, context) {
   contentList.innerHTML = "";
