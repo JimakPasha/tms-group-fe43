@@ -17,8 +17,9 @@ const user = {
     email: null, 
 };
 
-const {names, lastName, birthday, sex, adress, country, city, email} = user;
-console.log(names,lastName, birthday, sex, adress,country, city, email);
+
+const {names, lastName, birthday, sex, adress, location : { country, city }, email} = user;
+console.log(names,lastName, birthday, sex, adress, country, city, email);
 
 //task 3
 const players1 = ['Pozitiv4ik', 'Delphinate','MissLuck']; 
