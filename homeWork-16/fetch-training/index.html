@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOTR Characters</title>
+  </head>
+  <body>
+    <style>
+      body {
+        max-width: 800px;
+        margin: auto;
+      }
+      h1 {
+        text-align: center;
+      }
+      button {
+        cursor: pointer;
+      }
+      .buttons,
+      .control-buttons,
+      .wrapper,
+      .pages {
+        width: max-content;
+        margin: 15px auto;
+      }
+      .list-item {
+        margin-bottom: 10px;
+      }
+    </style>
+    <h1>Lord of the Rings Data</h1>
+
+    <section class="container">
+      <article class="buttons">
+        <button type="submit" data-endpoint="book" class="get-button">Показать книги</button>
+        <button type="submit" data-endpoint="movie" class="get-button">Показать фильмы</button>
+        <button type="submit" data-endpoint="character" class="get-button">Показать персонажей</button>
+        <button type="submit" data-endpoint="quote" class="get-button">Показать цитаты</button>
+      </article>
+
+      <article class="control-buttons">
+        <button type="submit" class="sort-positive" disabled>Сортировка по возрастанию</button>
+        <button type="submit" class="sort-negative" disabled>Сортировка по убыванию</button>
+        <button type="submit" class="prev-page" disabled>Назад</button>
+        <button type="submit" class="next-page" disabled>Вперед</button>
+      </article>
+
+      <article class="pages">
+        <span>Текущая страница: <span class="current-page"></span> | </span>
+        <span>Страниц: <span class="max-pages"></span></span>
+      </article>
+
+      <article class="wrapper">
+        <ul class="list"></ul>
+      </article>
+    </section>
+
+    <script src="index.js"></script>
+  </body>
+</html>
