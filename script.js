@@ -42,11 +42,20 @@ const player = {
    salary: 100500,
 };
 
-const { name1, age, team, salary } = player;
+// const { name1, age, team, salary } = player;
 
-function getData() {
+function getData(obj) {
+   const {name1, age, team, salary} = obj;
    console.log(`Меня зовут ${name1} , мне  ${age} . Я играю за  ${team} , и моя зарплата  ${salary} .`);
 }
 
 getData(player);
 
+const player1 = {
+   name1: 'Petr',
+   age: 23,
+   team: 'Gomel',
+   salary: 500,
+};
+
+getData(player1);
