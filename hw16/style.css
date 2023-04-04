@@ -1,0 +1,26 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+.character {
+    color: red;
+    border-bottom: 1px solid black;
+}
+
+.race {
+    color: blueviolet;
+    margin-left: 20px;
+    border-bottom: 1px solid black;
+}
+
+.gender {
+    color: coral;
+    margin-left: 20px;
+    border-bottom: 1px solid black;
+}
+
+.info {
+    display: flex;
+}
