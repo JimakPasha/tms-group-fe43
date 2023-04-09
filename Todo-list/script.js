@@ -1,3 +1,8 @@
+import { removeItemFromStorage } from "./modules/removeItemFromStorage.js";
+import { completeTodoForLS } from "./modules/completeTodoForLS.js";
+import { completedCount, totalCount } from "./modules/counts.js";
+import { createElement } from "./modules/createElement.js";
+
 const listButton = createElement("button", {
   className: "root__button",
   textContent: "X",
@@ -63,40 +68,40 @@ listDate.innerText = date.toLocaleString();
 bottomButtonShowAll.innerText = "Show All";
 topButtonAdd.innerText = "Add";
 
-function createElement(tagName, options) {
-  const element = Object.assign(document.createElement(tagName), options);
-  return element;
-}
+// function createElement(tagName, options) {
+//   const element = Object.assign(document.createElement(tagName), options);
+//   return element;
+// }
 
 const pushInStorage = (item, keyName, keyValue) => {
   todosArray.unshift(item);
   localStorage.setItem(keyName, JSON.stringify(keyValue));
 };
 
-const removeItemFromStorage = (keyName, id) => {
-  const items = JSON.parse(localStorage.getItem(keyName));
-  const removebleItem = items.find((item) => {
-    return item.todoId === id;
-  });
-  items.splice(items.indexOf(removebleItem), 1);
-  todosArray.splice(items.indexOf(removebleItem), 1);
-  localStorage.setItem("todoItems", JSON.stringify(items));
-};
+// const removeItemFromStorage = (keyName, id) => {
+//   const items = JSON.parse(localStorage.getItem(keyName));
+//   const removebleItem = items.find((item) => {
+//     return item.todoId === id;
+//   });
+//   items.splice(items.indexOf(removebleItem), 1);
+//   todosArray.splice(items.indexOf(removebleItem), 1);
+//   localStorage.setItem("todoItems", JSON.stringify(items));
+// };
 
-const completeTodoForLS = (keyName, id) => {
-  const items = JSON.parse(localStorage.getItem(keyName));
-  const todoItems = document.getElementsByClassName("root__wrapper");
-  const completeItem = items.filter((item) => {
-    return item.todoId === id;
-  })[0];
-  const index = items.indexOf(completeItem);
-  if (todoItems[index].className.includes("complete")) {
-    items[index].todoComplete = true;
-  } else {
-    items[index].todoComplete = false;
-  }
-  localStorage.setItem("todoItems", JSON.stringify(items));
-};
+// const completeTodoForLS = (keyName, id) => {
+//   const items = JSON.parse(localStorage.getItem(keyName));
+//   const todoItems = document.getElementsByClassName("root__wrapper");
+//   const completeItem = items.filter((item) => {
+//     return item.todoId === id;
+//   })[0];
+//   const index = items.indexOf(completeItem);
+//   if (todoItems[index].className.includes("complete")) {
+//     items[index].todoComplete = true;
+//   } else {
+//     items[index].todoComplete = false;
+//   }
+//   localStorage.setItem("todoItems", JSON.stringify(items));
+// };
 
 const todoDeleteAll = () => {
   for (let i = toDoBody.childElementCount; i > 0; i--) {
@@ -151,22 +156,22 @@ const todoAddAtKey = (e) => {
   todoAdd();
 };
 
-const totalCount = () => {
-  const count = document.getElementById("countAll");
-  count.innerText = `All: ${toDoBody.children.length}`;
-};
+// const totalCount = () => {
+//   const count = document.getElementById("countAll");
+//   count.innerText = `All: ${toDoBody.children.length}`;
+// };
 
-const completedCount = () => {
-  const count = document.getElementById("completeCount");
+// const completedCount = () => {
+//   const count = document.getElementById("completeCount");
 
-  const quantity = Array.from(
-    toDoBody.querySelectorAll(".root__wrapper")
-  ).filter((item) => {
-    return item.className.includes("complete");
-  });
+//   const quantity = Array.from(
+//     toDoBody.querySelectorAll(".root__wrapper")
+//   ).filter((item) => {
+//     return item.className.includes("complete");
+//   });
 
-  count.innerText = `Completed: ${quantity.length}`;
-};
+//   count.innerText = `Completed: ${quantity.length}`;
+// };
 
 const showCompleted = () => {
   const allElement = toDoBody.querySelectorAll(".root__wrapper");
@@ -313,25 +318,29 @@ listBox.append(listButton, listDate);
 
 root.append(toDoHeader, toDoBody);
 
-if (localStorage.getItem("todoItems")) {
-  todosArray = JSON.parse(localStorage.getItem("todoItems"));
-  for (const todo of todosArray) {
-    listText.innerText = todo.todoValue;
-    listDate.innerText = todo.todoDate;
-    listWrapper.id = todo.todoId;
-    if (todo.todoComplete) {
-      listWrapper.classList.add("complete");
-      listWrapper.firstChild.checked = todo.todoComplete;
-    } else {
-      listWrapper.classList.remove("complete");
-      listWrapper.firstChild.checked = todo.todoComplete;
+function lsCheck() {
+  if (localStorage.getItem("todoItems")) {
+    todosArray = JSON.parse(localStorage.getItem("todoItems"));
+    for (const todo of todosArray) {
+      listText.innerText = todo.todoValue;
+      listDate.innerText = todo.todoDate;
+      listWrapper.id = todo.todoId;
+      if (todo.todoComplete) {
+        listWrapper.classList.add("complete");
+        listWrapper.firstChild.checked = todo.todoComplete;
+      } else {
+        listWrapper.classList.remove("complete");
+        listWrapper.firstChild.checked = todo.todoComplete;
+      }
+      const listWrapperClone = listWrapper.cloneNode(true);
+      toDoBody.append(listWrapperClone);
     }
-    const listWrapperClone = listWrapper.cloneNode(true);
-    toDoBody.append(listWrapperClone);
+    totalCount();
+    completedCount();
   }
-  totalCount();
-  completedCount();
 }
+
+lsCheck()
 
 const todoHead = document.getElementById("rootHeader");
 
