@@ -1,7 +1,9 @@
+const API_KEY = 'wk0c3jD0ePdbXPlpPDIH';
+
 function getData(url) {
     return fetch(url, {
         headers: {
-            'Authorization': 'Bearer wk0c3jD0ePdbXPlpPDIH'
+            'Authorization': `Bearer ${API_KEY}`
         }
     })
     .then(response => response.json())
