@@ -1,14 +1,10 @@
 import { completedCount, totalCount } from "./counts.js";
-import {
-  listDate,
-  listText,
-  listWrapper,
-  toDoBody,
-} from "./elements.js";
+import { listDate, listText, listWrapper, toDoBody } from "./elements.js";
 
 export function lsCheck() {
+  let todosArray = [];
   if (localStorage.getItem("todoItems")) {
-    let todosArray = JSON.parse(localStorage.getItem("todoItems"));
+    todosArray = JSON.parse(localStorage.getItem("todoItems"));
     for (const todo of todosArray) {
       listText.innerText = todo.todoValue;
       listDate.innerText = todo.todoDate;

@@ -1,5 +1,4 @@
 import { createElement } from "./createElement.js";
-import { todosArray } from "./elements.js";
 
 export const correctTodo = (element) => {
   const target = element.target;
@@ -28,6 +27,10 @@ export const correctTodo = (element) => {
     target.parentElement.lastChild.lastChild.textContent =
       date.toLocaleString();
 
+    let todosArray = [];
+    if (localStorage.getItem("todoItems")) {
+      todosArray = JSON.parse(localStorage.getItem("todoItems"));
+    }
     const item = todosArray.filter((item) => {
       return item.todoId === target.parentElement.id;
     })[0];

@@ -3,7 +3,6 @@ import {
   listText,
   listWrapper,
   toDoBody,
-  todosArray,
   topInput,
 } from "./elements.js";
 import { totalCount } from "./counts.js";
@@ -26,7 +25,7 @@ export const todoAdd = () => {
       todoId: newId,
     };
 
-    pushInStorage(todoItemForStorage, "todoItems", todosArray);
+    pushInStorage(todoItemForStorage, "todoItems");
     listDate.innerText = date;
     const listWrapperClone = listWrapper.cloneNode(true);
     listWrapperClone.id = newId;
