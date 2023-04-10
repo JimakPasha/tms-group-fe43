@@ -1,3 +1,5 @@
+import { todosArray } from "./elements.js";
+
 export function removeItemFromStorage(keyName, id) {
   const items = JSON.parse(localStorage.getItem(keyName));
   const removebleItem = items.find((item) => {
