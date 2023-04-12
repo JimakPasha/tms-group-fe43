@@ -25,4 +25,6 @@ function printTodos(callback){
     })
 }
 
-requestBtn.addEventListener('click', printTodos(getTodos));
+requestBtn.addEventListener('click', () => {
+    printTodos(getTodos);
+});
