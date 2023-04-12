@@ -30,6 +30,14 @@ body{
     gap: 8px;
 }
 
+.select-sort{
+   position: absolute;
+   top: 9%;
+   left: 50%;
+   font-family: 'MedievalSharp', cursive;
+   font-weight: 500;
+}
+
 
 .request-film-btn, .request-book-btn, .request-char-btn, .btn-prev, .btn-next, .filter-btn{
     font-family: 'MedievalSharp', cursive;

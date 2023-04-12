@@ -7,6 +7,7 @@ const filterBtn = document.querySelector('.filter-btn');
 const filterInput = document.querySelector('.filter-input');
 const btnNext = document.querySelector('.btn-next');
 const btnPrev = document.querySelector('.btn-prev');
+const selectSort = document.querySelector('.select-sort');
 
 
 const URL = 'https://the-one-api.dev/v2';
@@ -43,7 +44,13 @@ filterBtn.addEventListener('click', () => {
   filterInput.value = '';
 })
 
-function fetchData(sortMethod = asc, fetchObject = '', currentPage = 1, characterName = ''){
+selectSort.addEventListener('change', () => {
+  sortMethod = selectSort.value;
+  getCharacters(currentPage);
+});
+
+
+function fetchData(sortMethod, fetchObject = '', currentPage = 1, characterName = ''){
   return new Promise((resolve,reject)=>{
       fetch(`${URL}${fetchObject}?sort=name:${sortMethod}&limit=10&page=${currentPage}&name=${characterName}`,{
           headers:{
