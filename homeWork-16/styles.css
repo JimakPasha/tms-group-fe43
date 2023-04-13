@@ -1,0 +1,45 @@
+button{
+    cursor: pointer;
+}
+
+body{
+    padding: 30px;
+    background-image: url(img/grunge-certificate-with-vintage-ornamental-frame.jpg);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.characters__list{
+    max-width: 600px;
+    margin: 300px auto;
+}
+
+
+.list__item{
+    font-size: 24px;
+    color: black;
+    font-family: 'MedievalSharp', cursive;
+    font-weight: 500;
+}
+
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.select-sort{
+   position: absolute;
+   top: 9%;
+   left: 50%;
+   font-family: 'MedievalSharp', cursive;
+   font-weight: 500;
+}
+
+
+.request-film-btn, .request-book-btn, .request-char-btn, .btn-prev, .btn-next, .filter-btn{
+    font-family: 'MedievalSharp', cursive;
+    font-weight: 500;
+}
