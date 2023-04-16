@@ -13,22 +13,13 @@ start.addEventListener("click", () => {
     time = setInterval(() => {
       secondsCount++;
       seconds.innerHTML = createTime();
-<<<<<<< HEAD
     }, 1000);
-=======
-    }, 100);
->>>>>>> b6a420c (feat: add hw-14)
     isStart = true;
   }
 });
 
 function createTime() {
-<<<<<<< HEAD
   return `${addZero(secondsCount)} sec`;
-=======
-  const sec = Math.floor(secondsCount / 10);
-  return `${addZero(sec)} sec`;
->>>>>>> b6a420c (feat: add hw-14)
 }
 
 function addZero(number) {
