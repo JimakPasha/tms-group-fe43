@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+    list-style-type: none;
+}
+.container{
+    width: 1000px;
+    margin: 0 auto;
+    
+}
+input, button{
+    margin: 10px;
+    font-size: 14px;
+    height: 29px;
+    border-radius: 5px;
+    border: 1px grey solid;
+    background-color: aliceblue;
+}
