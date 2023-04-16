@@ -46,8 +46,8 @@ for(item in subjects){
 }
 console.log(arraySubjects);
 //task-05
-let getArray = Object.entries(subjects)
-let newArray = getArray.map(([subject, {students, teachers}]) => ({subject, students, teachers}))
+let getArray = Object.entries(subjects);
+let newArray = getArray.map(([subject, {students, teachers}]) => ({subject, students, teachers}));
 let sortArray = newArray.sort((a, b) => b.teachers- a.teachers);
 console.log(sortArray);
 
