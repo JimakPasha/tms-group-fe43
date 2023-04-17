@@ -64,7 +64,7 @@ Object.values(subjects).forEach((item) => {
   arrItms.push(item);
   //
   arrSort = [...arrItms];
-  arrSort.sort((a, b) => a.teachers - b.teachers);
+  arrSort.sort((a, b) => b.teachers - a.teachers);
 });
 
 console.log("1. Названия предметов:", Object.keys(subjects).join(", "));
