@@ -16,16 +16,16 @@ class Frontend extends Developer{
         this.websiteName = websiteName;
     }
     buildWebSite(){
-        return `${this.name} start build website ${this.websiteName}`
+        return `${this.name} start build website ${this.websiteName}`;
     }
 }
 
 class Backend extends Developer{
     constructor(name){
-        super(name)
+        super(name);
     }
     buildServer(){
-        return `${this.name} start build server`
+        return `${this.name} start build server`;
     }
 }
 let DmitryDeveloper = new Developer('Dmitry');
@@ -40,3 +40,9 @@ console.log(DmitryDeveloper.startWork());
 console.log(DmitryDeveloper.endtWork());
 console.log(DmitryFrontend.buildWebSite());
 console.log(DmitryBackend.buildServer());
+
+//Ниже я добавил исправления
+const dmitry = new Frontend('dmitry','the-one-api.dev');
+console.log(dmitry.startWork());
+console.log(dmitry.buildWebSite());
+console.log(dmitry.endtWork());   
