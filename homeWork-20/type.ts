@@ -1,7 +1,7 @@
 interface faculties {
     id: number;
     faculty: string;
-    subjects: string;
+    subjects: string[];
     countStudents: number;
 }
 
@@ -39,10 +39,10 @@ interface movies {
     year: number;
     released: string;
     runtime: string;
-    genre: string;
+    genre: string[];
     director: string;
     writer: string;
-    actors: string;
+    actors: string[];
     plot: string;
     country: string;
     poster: string;
