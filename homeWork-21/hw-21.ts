@@ -36,11 +36,9 @@ const users: IUser[] = [
 ];
 
 function getStringNames(arr: IUser[]): string {
-  return arr.reduce((acc, { name }) => {
-    return (acc += name + ", ");
-  }, "");
+  return arr.reduce((acc, { name }) => (acc += name + ", "), "");
 }
-// console.log(getStringNames(users));
+console.log(getStringNames(users));
 
 function getCarrQuantity(arr: IUser[]): number {
   let quant: number = 0;
