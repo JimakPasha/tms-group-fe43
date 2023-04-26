@@ -1,0 +1,23 @@
+
+   *{box-sizing: border-box;
+padding: 0;
+margin: 0;}
+
+.task2,
+.task3{
+    padding: 10px;
+    border-radius: 20px;
+    background-color: blueviolet;
+    cursor: pointer;
+}
+
+
+.task4{
+    display: flex;
+
+}
+.block{
+    width: 20px;
+    height: 20px;
+    border: 1 solid black;
+}
