@@ -41,11 +41,7 @@ function getStringNames(arr: IUser[]): string {
 // console.log(getStringNames(users));
 
 function getCarrQuantity(arr: IUser[]): number {
-  let quant: number = 0;
-  arr.forEach(({ cars }) => {
-    if (cars) quant += cars.length;
-  });
-  return quant;
+  return arr.reduce((acc, { cars }) => (cars ? (acc += cars.length) : acc), 0);
 }
 // console.log(getCarrQuantity(users));
 
@@ -55,17 +51,11 @@ function educationSort(arr: IUser[]): IUser[] {
 // console.log(educationSort(users));
 
 function getAnimalsOwner(arr: IUser[]): IUser[] {
-  return arr.filter((item) => {
-    if (item.animals) return item;
-  });
+  return arr.filter((item) => (item.animals ? item : null));
 }
 // console.log(getAnimalsOwner(users));
 
 function getStringCars(arr: IUser[]): string {
-  let carsArr: string[] = [];
-  arr.forEach(({ cars }) => {
-    if (cars) carsArr.push(cars.join(", "));
-  });
-  return carsArr.join(", ");
+  return arr.reduce((acc, { cars }) => (cars ? (acc += cars.join(", ") + ", ") : acc), "");
 }
 // console.log(getStringCars(users));
