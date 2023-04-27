@@ -154,7 +154,7 @@ function getFilmByWord(arr: IMovie[], word: string): IMovie[] {
 }
 // console.log(getFilmByWord(films, "he learns the truth"));
 
-function getLOL<T>(arr: IMovie[], key: keyof IMovie, value: T): IMovie[] {
+function getFilteredArrByParams<T>(arr: IMovie[], key: keyof IMovie, value: T): IMovie[] {
   return arr.filter((item) => item[key] == value);
 }
-// console.log(getLOL<string | number>(films, "runtime", "130 min"));
+// console.log(getFilteredArrByParams<string | number>(films, "runtime", "130 min"));
