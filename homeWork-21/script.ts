@@ -1,7 +1,7 @@
 interface User {
     name: string;
-    phone?: string;
-    email?: string;
+    phone: string;
+    email: string;
     animals?: string[];
     cars?: string[];
     hasChildren: boolean;
