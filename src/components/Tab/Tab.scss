@@ -1,0 +1,32 @@
+.tab {
+    padding: 0 40px;
+    cursor: pointer;
+
+    &:hover {
+        color: #2231aa;
+    }
+
+    &.active {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -26px;
+            width: 100%;
+            height: 2px;
+            background-color: #313037;
+        }
+
+        &:hover {
+            color: inherit;
+            cursor: auto;
+        }
+    }
+
+    &.disabled {
+        color: #8D8E97;
+        cursor: not-allowed;
+    }
+}

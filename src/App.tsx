@@ -1,4 +1,7 @@
+import { BurgerMenu } from './components/BurgerMenu/BurgerMenu';
 import { Button } from './components/Button/Button';
+import { Tabs } from './components/Tabs/Tabs';
+import { Typography } from './components/Typography/Typography';
 import { UserInfo } from './components/UserInfo/UserInfo';
 
 export const App = () => {
@@ -40,6 +43,16 @@ export const App = () => {
       <Button type='secondary2' content='Secondary2' isDisabled onClick={handleClick5}/>
       <Button type='secondary2' content='Secondary2' isDisabled={false} onClick={handleClick6}/>
       <br/>
+      <Typography content='Test' type='H1'/>
+      <Typography content='Test' type='H2'/>
+      <Typography content='Test' type='H3'/>
+      <Typography content='Test' type='subline'/>
+      <Typography content='Test' type='textPrimary'/>
+      <Typography content='Test' type='textSecondary'/>
+      <br/>
+      <BurgerMenu />
+      <br/>
+      <Tabs />
     </div>
   );
 }
