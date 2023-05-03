@@ -1,0 +1,45 @@
+.input-wrapper {
+    position: relative;
+
+    .label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 600;
+    }
+
+    .input {
+        width: 100%;
+        height: 56px;
+        padding: 0 20px;
+        border-radius: 2px;
+        border: 2px solid #fff;
+        outline: none;
+        font-size: 16px;
+        font-weight: 400;
+
+        &:focus {
+            border-color: #dadada;
+        }
+
+        &:disabled {
+            color: #8D8E97;
+            background-color: #E8E8E8;
+            cursor: not-allowed;
+        }
+
+        &.error {
+            border-color: #FD3419;
+        }
+    }
+
+    .errorMesage {
+        position: absolute;
+        bottom: -32px;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #FD3419;
+    }
+}

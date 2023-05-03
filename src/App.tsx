@@ -1,3 +1,4 @@
+import { Form } from './Form/Form';
 import { BurgerMenu } from './components/BurgerMenu/BurgerMenu';
 import { Button } from './components/Button/Button';
 import { Tabs } from './components/Tabs/Tabs';
@@ -53,6 +54,7 @@ export const App = () => {
       <BurgerMenu />
       <br/>
       <Tabs />
+      <Form />
     </div>
   );
 }
