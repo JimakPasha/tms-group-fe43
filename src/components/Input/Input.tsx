@@ -21,13 +21,13 @@ export const Input: FC<IInput> = ({
 
     return (
         <div className='input-wrapper'>
-            <label className='label' htmlFor="input-text">{title}</label>
+            <label className='label' htmlFor={`input-${title}`}>{title}</label>
             <input
                 className={`input ${errorMessage && 'error'}`}
                 placeholder={placeholder}
                 disabled={isDisabled}
                 type="text"
-                id='input-text'
+                id={`input-${title}`}
                 value={value}
                 onChange={(e) => handleChange(e.target.value)}
             />

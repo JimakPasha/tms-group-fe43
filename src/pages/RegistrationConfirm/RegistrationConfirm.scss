@@ -1,0 +1,24 @@
+.registration-confrim {
+    margin-top: 72px;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 48px;
+        margin: 72px auto 0;
+        max-width: 624px;
+        border: 1px solid #DADADA;
+        padding: 40px;
+    }
+
+    &__text {
+        width: 337px;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+    }
+
+    &__email{
+        font-weight: 600;
+    }
+}
