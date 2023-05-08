@@ -18,6 +18,7 @@ export const Input: FC<IInput> = ({
     isDisabled = false,
     errorMessage
 }) => {
+
     return (
         <div className='input-wrapper'>
             <label className='label' htmlFor="input-text">{title}</label>

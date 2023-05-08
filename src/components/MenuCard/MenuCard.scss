@@ -1,0 +1,38 @@
+.menu {
+    position: relative;
+
+    &__items {
+        position: absolute;
+        top: 35px;
+        right: 0;
+        z-index: 10;
+        background: #fff;
+        border: 1px solid #ccc;
+    }
+
+    &__item {
+      width: 259px;
+      height: 83px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #dadada;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &-btn {
+        background: none;
+        border: none;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+          color: #2231aa;
+        }
+      }
+    }
+}

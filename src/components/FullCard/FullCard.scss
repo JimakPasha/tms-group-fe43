@@ -1,0 +1,36 @@
+.full-card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    max-width: 736px;
+    padding-bottom: 41px;
+    border-bottom: 1px solid #dadada;
+
+    &__content {
+        display: flex;
+        column-gap: 34px;
+    }
+
+    &__text {
+        margin-top: 24px;
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 400;
+        color: #8d8e97;
+    }
+
+    &__img-box {
+        width: 256px;
+        height: 244px;
+        overflow: hidden; /* чтобы изображение не выходило за границы блока */
+        display: flex;
+        align-items: center;
+    }
+
+    &__img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block; /* чтобы изображение было выровнено по центру блока */
+        margin: auto;
+    }
+}

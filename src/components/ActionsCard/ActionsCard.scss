@@ -1,0 +1,15 @@
+.actions-card {
+    display: flex;
+    justify-content: space-between;
+
+    &__box {
+        display: flex;
+        column-gap: 30px;
+    }
+
+    &__count-box {
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+    }
+}

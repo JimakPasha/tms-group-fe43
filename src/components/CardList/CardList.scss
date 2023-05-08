@@ -1,0 +1,22 @@
+.list {
+    display: flex;
+    column-gap: 32px;
+
+    &__full-card {
+        margin-bottom: 39px;
+    }
+
+    &__medium-card {
+        max-width: 736px;
+        display: flex;
+        column-gap: 32px;
+        row-gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    &__small-card {
+        display: flex;
+        flex-direction: column;
+        row-gap: 40px;
+    }
+}

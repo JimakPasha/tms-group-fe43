@@ -1,0 +1,28 @@
+.small-card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    max-width: 354px;
+    padding-bottom: 41px;
+    border-bottom: 1px solid #dadada;
+
+    &__content {
+        display: flex;
+        column-gap: 34px;
+    }
+
+    &__img-box {
+        width: 96px;
+        height: 96px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+    &__img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        margin: auto;
+    }
+}
