@@ -6,11 +6,11 @@ export const App = () => {
 
 
   return (
-    <div>
+    <>
       <PageTemplate>
         <SignUp/>
         {/* <RegistrationConfirm /> */}
       </PageTemplate>
-    </div>
+    </>
   );
 }

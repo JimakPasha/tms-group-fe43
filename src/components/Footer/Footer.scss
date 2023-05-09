@@ -1,0 +1,15 @@
+.footer {
+    height: 91px;
+    border-top: 1px solid #dadada;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__text {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        color: #8d8e97;
+    }
+}
