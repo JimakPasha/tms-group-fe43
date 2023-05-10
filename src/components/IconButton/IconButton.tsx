@@ -4,11 +4,12 @@ import './IconButton.scss';
 interface IIconButton {
     onClick: () => void;
     children: ReactNode;
+    withBackground?: boolean;
 }
 
-export const IconButton: FC<IIconButton> = ({onClick, children}) => {
+export const IconButton: FC<IIconButton> = ({onClick, children, withBackground = false}) => {
     return (
-        <button className='icon-button' onClick={onClick}>
+        <button className={`icon-button ${withBackground && 'withBackground'}`} onClick={onClick}>
             {children}
         </button>
     )

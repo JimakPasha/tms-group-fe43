@@ -1,6 +1,8 @@
 import { PageTemplate } from "./components/PageTemplate/PageTemplate";
+import { BlogPage } from "./pages/BlogPage/BlogPage";
+import { PostPage } from "./pages/PostPage/PostPage";
 // import { RegistrationConfirm } from "./pages/RegistrationConfirm/RegistrationConfirm";
-import { SignUp } from "./pages/SignUp/SignUp";
+import { SignUpPage } from "./pages/SignUpPage/SignUpPage";
 
 export const App = () => {
 
@@ -8,8 +10,7 @@ export const App = () => {
   return (
     <>
       <PageTemplate>
-        <SignUp/>
-        {/* <RegistrationConfirm /> */}
+        <BlogPage />
       </PageTemplate>
     </>
   );

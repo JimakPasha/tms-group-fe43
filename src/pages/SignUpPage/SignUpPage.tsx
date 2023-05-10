@@ -2,9 +2,9 @@ import { FC, useState } from 'react';
 import { Typography } from '../../components/Typography/Typography';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
-import './SignUp.scss';
+import './SignUpPage.scss';
 
-export const SignUp: FC = () => {
+export const SignUpPage: FC = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

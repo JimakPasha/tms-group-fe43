@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Typography } from '../../components/Typography/Typography';
 import { Button } from '../../components/Button/Button';
-import './RegistrationConfirm.scss';
+import './RegistrationConfirmPage.scss';
 
-export const RegistrationConfirm: FC = () => {
+export const RegistrationConfirmPage: FC = () => {
 
     const handleClickGoHome = () => {
         console.log('handleClickGoHome');
