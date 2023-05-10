@@ -1,11 +1,15 @@
 import { FC } from 'react';
-import './CardList.scss';
-import { cards } from '../../mock/cards';
 import { FullCard } from '../FullCard/FullCard';
 import { MediumCard } from '../MediumCard/MediumCard';
 import { SmallCard } from '../SmallCard/SmallCard';
+import { ICard } from '../../interfaces/ICard';
+import './CardList.scss';
 
-export const CardList: FC = () => {
+interface ICardList {
+    cards: ICard[];
+}
+
+export const CardList: FC<ICardList> = ({cards}) => {
     const fullCard = cards[0];
     const mediumCards = cards.slice(1, 5);
     const smallCards = cards.slice(5, 12);
