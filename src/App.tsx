@@ -1,5 +1,5 @@
 import { PageTemplate } from "./components/PageTemplate/PageTemplate";
-import { BlogPage } from "./pages/BlogPage/BlogPage";
+import { SignInPage } from "./pages/SignInPage/SignInPage";
 
 export const App = () => {
 
@@ -7,7 +7,7 @@ export const App = () => {
   return (
     <>
       <PageTemplate>
-        <BlogPage />
+        <SignInPage />
       </PageTemplate>
     </>
   );

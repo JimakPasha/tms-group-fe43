@@ -17,6 +17,7 @@ export const Button: FC<IButton> = ({content, isDisabled  = false, onClick, type
           className={buttonClass}
           onClick={onClick}
           disabled={isDisabled}
+          type='button'
         >
             {content}
         </button>

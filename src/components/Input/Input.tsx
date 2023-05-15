@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, RefObject, KeyboardEvent } from 'react';
 import './Input.scss';
 
 interface IInput {
@@ -8,6 +8,8 @@ interface IInput {
     placeholder?: string;
     isDisabled?: boolean;
     errorMessage?: string;
+    inputRef?: RefObject<HTMLInputElement>;
+    handleKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void
 }
 
 export const Input: FC<IInput> = ({
@@ -16,7 +18,9 @@ export const Input: FC<IInput> = ({
     placeholder,
     title,
     isDisabled = false,
-    errorMessage
+    errorMessage,
+    inputRef,
+    handleKeyUp
 }) => {
 
     return (
@@ -30,6 +34,8 @@ export const Input: FC<IInput> = ({
                 id={`input-${title}`}
                 value={value}
                 onChange={(e) => handleChange(e.target.value)}
+                ref={inputRef}
+                onKeyUp={handleKeyUp}
             />
             {errorMessage && <div className='errorMesage'>{errorMessage}</div>}
         </div>
