@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
-import menu from '../../assets/icons/menu.svg';
 import { IconButton } from '../IconButton/IconButton';
+import { MenuIcon } from '../../assets/icons';
 import './MenuCard.scss';
 
 export const MenuCard: FC = () => {
@@ -20,7 +20,7 @@ export const MenuCard: FC = () => {
     return (
         <div className='menu'>
           <IconButton onClick={handleToggleClick} >
-            <img src={menu} alt="menu" />
+          <MenuIcon />
           </IconButton>
           {open && (
             <ul className='menu__items'>

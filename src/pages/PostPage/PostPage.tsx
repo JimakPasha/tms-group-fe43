@@ -8,11 +8,11 @@ import { cards } from '../../mock/cards';
 import { Typography } from '../../components/Typography/Typography';
 import { IconButton } from '../../components/IconButton/IconButton';
 import './PostPage.scss';
+import { useAppContext } from '../../contexts/AppContex';
 
-interface IPostPage {
-}
+export const PostPage: FC= () => {
+    const { isDarkTheme } = useAppContext();
 
-export const PostPage: FC<IPostPage> = () => {
     const {title, image} = cards[0];
 
     return (
@@ -63,7 +63,7 @@ export const PostPage: FC<IPostPage> = () => {
                     <div className="post__transitions-box">
                         <img src={arrowPrev} alt="prev" />
                         <div className='post__transitions-texts prev'>
-                            <div className='post__transitions-title'>Prev</div>
+                            <div className={`post__transitions-title ${isDarkTheme() && 'dark'}`}>Prev</div>
                             <div className='post__transitions-text'>10 Things to Know About Salvador Dalí</div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@ export const PostPage: FC<IPostPage> = () => {
                 <IconButton onClick={() => console.log('arrowNext')}>
                     <div className="post__transitions-box">
                         <div className='post__transitions-texts next'>
-                            <div className='post__transitions-title'>Next</div>
+                            <div className={`post__transitions-title ${isDarkTheme() && 'dark'}`}>Next</div>
                             <div className='post__transitions-text'>8 Beautiful Villas Belonging to Artists You Need to See</div>
                         </div>
                         <img src={arrowNext} alt="next" />

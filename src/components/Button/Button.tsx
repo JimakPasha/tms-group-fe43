@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useAppContext } from '../../contexts/AppContex';
 import './Button.scss';
 
 interface IButton {
@@ -9,8 +10,9 @@ interface IButton {
 }
 
 export const Button: FC<IButton> = ({content, isDisabled  = false, onClick, type}) => {
+    const { isDarkTheme } = useAppContext();
 
-    const buttonClass = `button button--${type} ${isDisabled ? 'disabled' : 'active'}`
+    const buttonClass = `button button--${type} ${isDisabled ? 'disabled' : 'active'} ${isDarkTheme() && 'dark'}`
 
     return (
         <button

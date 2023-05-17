@@ -1,6 +1,12 @@
 .dark {
     color: #fff;
     background-color: #313037;
+
+    svg {
+        path {
+            fill: #fff;
+        }
+    }
 }
 
 .light {

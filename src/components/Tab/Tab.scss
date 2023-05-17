@@ -29,4 +29,8 @@
         color: #8D8E97;
         cursor: not-allowed;
     }
+
+    &.dark.active::after {
+        background-color: #fff;
+    }
 }
