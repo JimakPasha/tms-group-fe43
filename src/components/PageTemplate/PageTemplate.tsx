@@ -3,21 +3,20 @@ import { Header } from '../Header/Header';
 import { Container } from '../Container/Container';
 import { Footer } from '../Footer/Footer';
 import { useAppContext } from '../../contexts/AppContex';
-import './PageTemplate.scss';
 
 interface IPageTemplate {
     children?: ReactNode
 }
 
 export const PageTemplate: FC<IPageTemplate> = ({children}) => {
-    const { toggleTheme, isDarkTheme } = useAppContext();
+    const { toggleTheme } = useAppContext();
 
     const handleToggleTheme = () => {
         toggleTheme();
     }
 
     return (
-        <div className={isDarkTheme() ? 'dark' : 'light'}>
+        <>
             <Header />
             <Container>
                 {children}
@@ -29,6 +28,6 @@ export const PageTemplate: FC<IPageTemplate> = ({children}) => {
             >
                 toggle theme
             </button>
-        </div>
+        </>
     )
 };

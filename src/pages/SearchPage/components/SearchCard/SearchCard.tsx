@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import './SearchCard.scss';
-import { DateCard } from '../DateCard/DateCard';
-import { Typography } from '../Typography/Typography';
-import { ActionsCard } from '../ActionsCard/ActionsCard';
+import { DateCard } from '../../../../components/DateCard/DateCard';
+import { Typography } from '../../../../components/Typography/Typography';
+import { ActionsCard } from '../../../../components/ActionsCard/ActionsCard';
 
 interface ISearchCard {
     id: number;
@@ -22,7 +22,7 @@ export const SearchCard: FC<ISearchCard> = ({id, date, image, title}) => {
                 </div>
                 <div>
                     <DateCard date={date}/>
-                    <Typography content={title} type='H3' isLink/>
+                    <Typography content={title} type='H3'/>
                 </div>
             </div>
             <ActionsCard />

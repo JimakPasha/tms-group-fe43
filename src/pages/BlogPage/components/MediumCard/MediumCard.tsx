@@ -9,16 +9,19 @@ interface IMediumCard {
     title: string;
     image: string;
     date: string;
+    onClick: (id: number) => void;
 }
 
-export const MediumCard: FC<IMediumCard> = ({id, date, image, title}) => {
+export const MediumCard: FC<IMediumCard> = ({id, date, image, title, onClick}) => {
     return (
         <div className='medium-card'>
             <div className='medium-card__img-box'>
                 <img className='medium-card__img' src={image} alt={title} />
             </div>
             <DateCard date={date} />
-            <Typography content={title} type='H3' isLink/>
+            <button className='medium-card__btn' onClick={() => onClick(id)}>
+                <Typography content={title} type='H3'/>
+            </button>
             <div className='medium-card__actions'>
                 <ActionsCard />
             </div>

@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 import { Typography } from '../../components/Typography/Typography';
 import { Tabs } from './components/Tabs/Tabs';
-import { CardList } from './components/CardList/CardList';
+import { PostList } from './components/PostList/PostList';
 import { ICard } from '../../interfaces/ICard';
-import { getCards } from '../../api/getCards';
+import { getPosts } from '../../api/getPosts';
 import { Spinner } from '../../components/Spinner/Spinner';
 import './BlogPage.scss';
 
@@ -12,13 +12,10 @@ export const BlogPage: FC = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchCards = async () => {
-            const data = await getCards();
+        getPosts().then((data) => {
             setCards(data);
             setIsLoading(false);
-        }
-
-        fetchCards();
+        })
     }, []);
 
     return (
@@ -29,7 +26,7 @@ export const BlogPage: FC = () => {
                     <Tabs />
                 </div>
             )}
-            {cards && <CardList cards={cards}/>}
+            {cards && <PostList cards={cards}/>}
         </div>
     )
 };

@@ -10,16 +10,19 @@ interface IFullCard {
     title: string;
     image: string;
     date: string;
+    onClick: (id: number) => void;
 }
 
-export const FullCard: FC<IFullCard> = ({id, text, title, image, date}) => {
+export const FullCard: FC<IFullCard> = ({id, text, title, image, date, onClick}) => {
 
     return (
         <div className='full-card'>
             <div className='full-card__content'>
                 <div>
                     <DateCard date={date} />
-                    <Typography content={title} type='H2' isLink/>
+                    <button className='full-card__btn' onClick={() => onClick(id)}>
+                        <Typography content={title} type='H2'/>
+                    </button>
                     <p className='full-card__text'>{text}</p>
                     <div></div>
                 </div>

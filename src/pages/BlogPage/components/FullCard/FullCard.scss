@@ -33,4 +33,14 @@
         display: block; /* чтобы изображение было выровнено по центру блока */
         margin: auto;
     }
+
+    &__btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        &:hover {
+            color: #2231AA;
+        }
+    }
 }

@@ -2,6 +2,8 @@ import { FC } from 'react';
 import './SuccessPage.scss';
 import { Typography } from '../../components/Typography/Typography';
 import { Button } from '../../components/Button/Button';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { createBackToHomePath } from '../../constants/createBackToHomePath';
 
 export const SuccessPage: FC= () => {
 
@@ -11,6 +13,7 @@ export const SuccessPage: FC= () => {
 
     return (
         <div className='success-page'>
+            <Breadcrumbs path={[createBackToHomePath]} />
             <Typography content='Success' type='H1'/>
             <div className="success-page__content">
                 <div>

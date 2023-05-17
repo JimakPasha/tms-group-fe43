@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { cards } from '../../mock/cards';
-import { SearchCard } from '../SearchCard/SearchCard';
+import { cards } from '../../../../mock/cards';
 import './SearchList.scss';
+import { SearchCard } from '../SearchCard/SearchCard';
 
 interface ISearchList {
 }

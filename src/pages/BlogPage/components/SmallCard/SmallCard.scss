@@ -25,4 +25,14 @@
         display: block;
         margin: auto;
     }
+
+    &__btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        &:hover {
+            color: #2231AA;
+        }
+    }
 }

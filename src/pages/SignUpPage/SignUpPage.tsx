@@ -3,6 +3,8 @@ import { Typography } from '../../components/Typography/Typography';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 import './SignUpPage.scss';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { createBackToHomePath } from '../../constants/createBackToHomePath';
 
 export const SignUpPage: FC = () => {
     const [name, setName] = useState('');
@@ -32,6 +34,7 @@ export const SignUpPage: FC = () => {
 
     return (
         <div className='sign-up'>
+            <Breadcrumbs path={[createBackToHomePath]} />
             <Typography content='Sign Up' type='H1'/>
             <form className='sign-up__form'>
                 <Input

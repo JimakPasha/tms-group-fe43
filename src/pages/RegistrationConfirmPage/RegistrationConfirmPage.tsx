@@ -2,6 +2,8 @@ import { FC } from 'react';
 import { Typography } from '../../components/Typography/Typography';
 import { Button } from '../../components/Button/Button';
 import './RegistrationConfirmPage.scss';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { createBackToHomePath } from '../../constants/createBackToHomePath';
 
 export const RegistrationConfirmPage: FC = () => {
 
@@ -12,6 +14,7 @@ export const RegistrationConfirmPage: FC = () => {
 
     return (
         <div className='registration-confrim'>
+            <Breadcrumbs path={[createBackToHomePath]} />
             <Typography content='Registration Confirmation' type='H1'/>
             <div className='registration-confrim__content'>
                 <div>

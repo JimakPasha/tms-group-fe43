@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
 import { AppProvider } from './contexts/AppContex';
+import { BrowserRouter } from 'react-router-dom';
 import './index.scss';
 
 const root = ReactDOM.createRoot(
@@ -10,6 +11,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <AppProvider>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </AppProvider>
 );

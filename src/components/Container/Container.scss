@@ -6,5 +6,21 @@
     flex-direction: column;
     flex: 1 0 auto;
     row-gap: 72px;
-    padding: 0 5px;
+    padding: 72px 5px 0;
+}
+
+.dark {
+    color: #fff;
+    background-color: #313037;
+
+    svg {
+        path {
+            fill: #fff;
+        }
+    }
+}
+
+.light {
+    color: #313037;
+    background-color: #F3F3F3;
 }

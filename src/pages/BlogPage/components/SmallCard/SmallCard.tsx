@@ -9,15 +9,18 @@ interface ISmallCard {
     title: string;
     image: string;
     date: string;
+    onClick: (id: number) => void;
 }
 
-export const SmallCard: FC<ISmallCard> = ({id, date, image, title}) => {
+export const SmallCard: FC<ISmallCard> = ({id, date, image, title, onClick}) => {
     return (
         <div className='small-card'>
             <div className='small-card__content'>
                 <div>
                     <DateCard date={date} />
-                    <Typography content={title} type='H3' isLink/>
+                    <button className='small-card__btn' onClick={() => onClick(id)}>
+                        <Typography content={title} type='H3'/>
+                    </button>
                 </div>
                 <div>
                     <div className='small-card__img-box'>
