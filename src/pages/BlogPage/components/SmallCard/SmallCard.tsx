@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { DateCard } from '../DateCard/DateCard';
-import { Typography } from '../Typography/Typography';
 import './SmallCard.scss';
-import { ActionsCard } from '../ActionsCard/ActionsCard';
+import { DateCard } from '../../../../components/DateCard/DateCard';
+import { Typography } from '../../../../components/Typography/Typography';
+import { ActionsCard } from '../../../../components/ActionsCard/ActionsCard';
 
 interface ISmallCard {
     id: number;

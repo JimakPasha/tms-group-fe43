@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useAppContext } from '../../contexts/AppContex';
+import { useAppContext } from '../../../../contexts/AppContex';
 import './Tab.scss';
 
 interface ITab {

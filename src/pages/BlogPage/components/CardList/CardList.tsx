@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { FullCard } from '../FullCard/FullCard';
+import { ICard } from '../../../../interfaces/ICard';
+import './CardList.scss';
 import { MediumCard } from '../MediumCard/MediumCard';
 import { SmallCard } from '../SmallCard/SmallCard';
-import { ICard } from '../../interfaces/ICard';
-import './CardList.scss';
 
 interface ICardList {
     cards: ICard[];

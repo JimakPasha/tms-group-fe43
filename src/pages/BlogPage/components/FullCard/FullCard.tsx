@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { Typography } from '../Typography/Typography';
+import { Typography } from '../../../../components/Typography/Typography';
 import './FullCard.scss';
-import { DateCard } from '../DateCard/DateCard';
-import { ActionsCard } from '../ActionsCard/ActionsCard';
+import { DateCard } from '../../../../components/DateCard/DateCard';
+import { ActionsCard } from '../../../../components/ActionsCard/ActionsCard';
 
 interface IFullCard {
     id: number;

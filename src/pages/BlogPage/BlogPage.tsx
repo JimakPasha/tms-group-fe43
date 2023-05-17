@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { Typography } from '../../components/Typography/Typography';
-import { Tabs } from '../../components/Tabs/Tabs';
-import { CardList } from '../../components/CardList/CardList';
+import { Tabs } from './components/Tabs/Tabs';
+import { CardList } from './components/CardList/CardList';
 import { ICard } from '../../interfaces/ICard';
 import { getCards } from '../../api/getCards';
 import { Spinner } from '../../components/Spinner/Spinner';

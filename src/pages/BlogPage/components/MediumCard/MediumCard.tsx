@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import './MediumCard.scss';
-import { DateCard } from '../DateCard/DateCard';
-import { Typography } from '../Typography/Typography';
-import { ActionsCard } from '../ActionsCard/ActionsCard';
+import { DateCard } from '../../../../components/DateCard/DateCard';
+import { Typography } from '../../../../components/Typography/Typography';
+import { ActionsCard } from '../../../../components/ActionsCard/ActionsCard';
 
 interface IMediumCard {
     id: number;
