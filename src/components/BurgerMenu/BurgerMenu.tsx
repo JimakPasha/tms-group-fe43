@@ -1,28 +1,74 @@
 import { FC, useState } from 'react';
 import burgerMenu from '../../assets/icons/burgerMenu.svg';
 import cancel from '../../assets/icons/cancel.svg';
+import { LightIcon, DarkIcon } from '../../assets/icons';
+import { useNavigate } from 'react-router-dom';
 import './BurgerMenu.scss';
+import { useAppContext } from '../../contexts/AppContex';
+import { Button } from '../Button/Button';
 
+export const BurgerMenu: FC = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
+    const { toggleTheme, isDarkTheme } = useAppContext();
 
-interface IBurgerMenu {
-}
-
-export const BurgerMenu: FC<IBurgerMenu> = () => {
-    const [isOpen, setIsOpen] = useState(false); // let isOpen = false;
+    const options = [
+        {id: 1, name: 'Home', url: './posts'},
+        {id: 2, name: 'Add post', url: ''},
+    ] 
 
     const handleClick = () => {
         setIsOpen((prev) => !prev);
     }
 
+    const handleGoTo = (url: string) => {
+        navigate(url);
+        setIsOpen(false);
+    }
+
     return (
-        <>
-            <button className='burgerMenu' onClick={handleClick}>
+        <div className='burgerMenu'>
+            <button className='burgerMenu__btn' onClick={handleClick}>
                 {isOpen ? (
                     <img src={cancel} alt="cancel" />
                 ) : (
                     <img src={burgerMenu} alt="burgerMenu" />
                 )}
             </button>
-        </>
+            <div className={`burgerMenu__content ${isOpen && 'open'}`}>
+                <nav className="burgerMenu__nav">
+                    {options.map(({id, name, url}) => (
+                        <li key={id} className='burgerMenu__nav-item'>
+                            <button className='burgerMenu__nav-btn' onClick={() => handleGoTo(url)}>
+                                {name}
+                            </button>
+                        </li>
+                    ))}
+                </nav>
+                <div>
+                    <div className="burgerMenu__theme-box">
+                        <button
+                            className="burgerMenu__theme-btn"
+                            onClick={toggleTheme}
+                            disabled={isDarkTheme()}
+                        >
+                            <DarkIcon />
+                        </button>
+                        <button
+                            className="burgerMenu__theme-btn"
+                            onClick={toggleTheme}
+                            disabled={!isDarkTheme()}
+                        >
+                            <LightIcon />
+                        </button>
+                    </div>
+                    <Button
+                        content='Log Out'
+                        onClick={() => console.log('Log Out')}
+                        type='secondary'
+                    />
+                </div>
+            </div>
+        </div>
     )
 };

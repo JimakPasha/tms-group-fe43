@@ -4,12 +4,13 @@ import { Button } from '../../components/Button/Button';
 import './RegistrationConfirmPage.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { createBackToHomePath } from '../../constants/createBackToHomePath';
+import { useNavigate } from 'react-router-dom';
 
 export const RegistrationConfirmPage: FC = () => {
+    const navigate = useNavigate();
 
     const handleClickGoHome = () => {
-        console.log('handleClickGoHome');
-        
+        navigate('./posts');
     }
 
     return (

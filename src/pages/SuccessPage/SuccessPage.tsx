@@ -4,11 +4,13 @@ import { Typography } from '../../components/Typography/Typography';
 import { Button } from '../../components/Button/Button';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { createBackToHomePath } from '../../constants/createBackToHomePath';
+import { useNavigate } from 'react-router-dom';
 
 export const SuccessPage: FC= () => {
+    const navigate = useNavigate();
 
     const handleClick = () => {
-        console.log('handleClickGoHome');
+        navigate('./posts');
     }
 
     return (

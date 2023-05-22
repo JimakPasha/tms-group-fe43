@@ -5,8 +5,10 @@ import { IconButton } from '../IconButton/IconButton';
 import search from '../../assets/icons/search.svg';
 import cancel from '../../assets/icons/cancel.svg';
 import './Header.scss';
+import { Link } from 'react-router-dom';
 
 export const Header: FC = () => {
+    const isLogged = false;
     const [openSearch, setOpenSearch] = useState(false);
     const [searchValue, setSearchValue] = useState('');
 
@@ -21,6 +23,7 @@ export const Header: FC = () => {
 
     return (
         <header className='header'>
+            {isLogged && <Link to='/secret-information'>переход на секретную инфу</Link>}
             <BurgerMenu />
             {openSearch && (
                 <div className='header__search-input'>
