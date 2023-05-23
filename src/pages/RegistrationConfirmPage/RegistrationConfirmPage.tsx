@@ -10,7 +10,7 @@ export const RegistrationConfirmPage: FC = () => {
     const navigate = useNavigate();
 
     const handleClickGoHome = () => {
-        navigate('./posts');
+        navigate('/posts');
     }
 
     return (
