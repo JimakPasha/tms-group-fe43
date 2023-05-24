@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { useAppContext } from '../../../../contexts/AppContex';
 import './Tab.scss';
+import { useAppSelector } from '../../../../store/hooks';
+import { isDarktheme } from '../../../../store/theme/selectors';
 
 interface ITab {
     title: string;
@@ -9,9 +10,9 @@ interface ITab {
 }
 
 export const Tab: FC<ITab> = ({title, isActive = false, isDisabled = false}) => {
-    const { isDarkTheme } = useAppContext();
+    const isDark = useAppSelector(isDarktheme);
 
-    const buttonClass = `tab ${isDisabled && 'disabled'} ${isActive && 'active'} ${isDarkTheme() && 'dark'}`;
+    const buttonClass = `tab ${isDisabled && 'disabled'} ${isActive && 'active'} ${isDark && 'dark'}`;
 
     return <li className={buttonClass}>{title}</li>
 };

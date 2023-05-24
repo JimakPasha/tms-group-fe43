@@ -4,13 +4,16 @@ import cancel from '../../assets/icons/cancel.svg';
 import { LightIcon, DarkIcon } from '../../assets/icons';
 import { useNavigate } from 'react-router-dom';
 import './BurgerMenu.scss';
-import { useAppContext } from '../../contexts/AppContex';
 import { Button } from '../Button/Button';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { isDarktheme } from '../../store/theme/selectors';
+import { toggleThemeAction } from '../../store/theme/actions';
 
 export const BurgerMenu: FC = () => {
-    const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
-    const { toggleTheme, isDarkTheme } = useAppContext();
+    const dispatch = useAppDispatch();
+    const [isOpen, setIsOpen] = useState(false);
+    const isDark = useAppSelector(isDarktheme);
 
     const options = [
         {id: 1, name: 'Home', url: './posts'},
@@ -49,15 +52,15 @@ export const BurgerMenu: FC = () => {
                     <div className="burgerMenu__theme-box">
                         <button
                             className="burgerMenu__theme-btn"
-                            onClick={toggleTheme}
-                            disabled={isDarkTheme()}
+                            onClick={() => dispatch(toggleThemeAction())}
+                            disabled={isDark}
                         >
                             <DarkIcon />
                         </button>
                         <button
                             className="burgerMenu__theme-btn"
-                            onClick={toggleTheme}
-                            disabled={!isDarkTheme()}
+                            onClick={() => dispatch(toggleThemeAction())}
+                            disabled={!isDark}
                         >
                             <LightIcon />
                         </button>

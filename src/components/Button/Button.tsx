@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { useAppContext } from '../../contexts/AppContex';
 import './Button.scss';
+import { useAppSelector } from '../../store/hooks';
+import { isDarktheme } from '../../store/theme/selectors';
 
 interface IButton {
     isDisabled?: boolean;
@@ -9,10 +10,10 @@ interface IButton {
     onClick: () => void;
 }
 
-export const Button: FC<IButton> = ({content, isDisabled  = false, onClick, type}) => {
-    const { isDarkTheme } = useAppContext();
+export const Button: FC<IButton> = ({content, isDisabled = false, onClick, type}) => {
+    const isDark = useAppSelector(isDarktheme);
 
-    const buttonClass = `button button--${type} ${isDisabled ? 'disabled' : 'active'} ${isDarkTheme() && 'dark'}`
+    const buttonClass = `button button--${type} ${isDisabled ? 'disabled' : 'active'} ${isDark && 'dark'}`
 
     return (
         <button

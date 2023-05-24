@@ -7,16 +7,17 @@ import arrowNext from '../../assets/icons/arrowNext.svg';
 import { Typography } from '../../components/Typography/Typography';
 import { IconButton } from '../../components/IconButton/IconButton';
 import './PostPage.scss';
-import { useAppContext } from '../../contexts/AppContex';
 import { useParams } from 'react-router-dom';
 import { getPost } from '../../api/getPost';
 import { ICard } from '../../interfaces/ICard';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { useAppSelector } from '../../store/hooks';
+import { isDarktheme } from '../../store/theme/selectors';
 
 export const PostPage: FC= () => {
     const { id } = useParams();
-    const { isDarkTheme } = useAppContext();
+    const isDark = useAppSelector(isDarktheme);
 
     const [post, setPost] = useState<null | ICard>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -72,7 +73,7 @@ export const PostPage: FC= () => {
                             <div className="post__transitions-box">
                                 <img src={arrowPrev} alt="prev" />
                                 <div className='post__transitions-texts prev'>
-                                    <div className={`post__transitions-title ${isDarkTheme() && 'dark'}`}>Prev</div>
+                                    <div className={`post__transitions-title ${isDark && 'dark'}`}>Prev</div>
                                     <div className='post__transitions-text'>10 Things to Know About Salvador Dalí</div>
                                 </div>
                             </div>
@@ -80,7 +81,7 @@ export const PostPage: FC= () => {
                         <IconButton onClick={() => console.log('arrowNext')}>
                             <div className="post__transitions-box">
                                 <div className='post__transitions-texts next'>
-                                    <div className={`post__transitions-title ${isDarkTheme() && 'dark'}`}>Next</div>
+                                    <div className={`post__transitions-title ${isDark && 'dark'}`}>Next</div>
                                     <div className='post__transitions-text'>8 Beautiful Villas Belonging to Artists You Need to See</div>
                                 </div>
                                 <img src={arrowNext} alt="next" />
