@@ -5,6 +5,7 @@ import { Button } from '../../components/Button/Button';
 import './SignInPage.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { createBackToHomePath } from '../../constants/createBackToHomePath';
+import { Link } from 'react-router-dom';
 
 export const SignInPage: FC = () => {
     const [email, setEmail] = useState('');
@@ -65,9 +66,9 @@ export const SignInPage: FC = () => {
                 <Button content='Sign Ip' onClick={handleSubmit} type='primary'/>
                 <p className='sign-in__form-description'>
                     Don’t have an account? {' '}
-                <a className='sign-in__form-link' href="https://example.com">
+                <Link to='/sign-up' className='sign-in__form-link'>
                     Sign Up
-                </a>
+                </Link>
                 </p>
             </form>
         </div>

@@ -5,11 +5,14 @@ interface IIconButton {
     onClick: () => void;
     children: ReactNode;
     withBackground?: boolean;
+    type?: 'header' | 'default';
 }
 
-export const IconButton: FC<IIconButton> = ({onClick, children, withBackground = false}) => {
+export const IconButton: FC<IIconButton> = ({onClick, children, withBackground = false, type = 'default'}) => {
+    const className = `icon-button ${withBackground && 'withBackground'} ${type === 'header' && 'headerType'}`;
+
     return (
-        <button className={`icon-button ${withBackground && 'withBackground'}`} onClick={onClick}>
+        <button className={className} onClick={onClick}>
             {children}
         </button>
     )

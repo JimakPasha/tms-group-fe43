@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { FullCard } from '../FullCard/FullCard';
-import { ICard } from '../../../../interfaces/ICard';
+import { IPost } from '../../../../interfaces/IPost';
 import { MediumCard } from '../MediumCard/MediumCard';
 import { SmallCard } from '../SmallCard/SmallCard';
 import './PostList.scss';
 import { useNavigate } from 'react-router-dom';
 
 interface IPostList {
-    cards: ICard[];
+    cards: IPost[];
 }
 
 export const PostList: FC<IPostList> = ({cards}) => {
@@ -25,17 +25,17 @@ export const PostList: FC<IPostList> = ({cards}) => {
         <div className='list'>
             <div>
                 <div className='list__full-card'>
-                    <FullCard id={fullCard.id} date={fullCard.date} image={fullCard.image} text={fullCard.text} title={fullCard.title} onClick={handleClick} />
+                    <FullCard id={fullCard.id} date={fullCard.date} image={fullCard.image} text={fullCard.text} title={fullCard.title} onClick={handleClick} dislike={fullCard.dislike} like={fullCard.like} />
                 </div>
                 <div className='list__medium-card'>
-                    {mediumCards.map(({id, date, image, title}) => (
-                        <MediumCard key={id} id={id} date={date} image={image} title={title} onClick={handleClick}/>
+                    {mediumCards.map(({id, date, image, title, like, dislike}) => (
+                        <MediumCard key={id} id={id} date={date} image={image} title={title} onClick={handleClick} dislike={dislike} like={like} />
                     ))}
                 </div>
             </div>
             <div className='list__small-card'>
-                {smallCards.map(({id, date, image, title}) => (
-                        <SmallCard key={id} id={id} date={date} image={image} title={title} onClick={handleClick}/>
+                {smallCards.map(({id, date, image, title, like, dislike}) => (
+                        <SmallCard key={id} id={id} date={date} image={image} title={title} onClick={handleClick} dislike={dislike} like={like} />
                 ))}
             </div>
         </div>

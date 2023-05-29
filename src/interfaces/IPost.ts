@@ -1,4 +1,4 @@
-export interface ICard {
+export interface IPost {
     id: number;
     image: string;
     text: string;
@@ -7,4 +7,6 @@ export interface ICard {
     title: string;
     description: string;
     author: number;
+    dislike: number;
+    like: number;
 }

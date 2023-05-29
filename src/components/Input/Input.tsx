@@ -9,7 +9,8 @@ interface IInput {
     isDisabled?: boolean;
     errorMessage?: string;
     inputRef?: RefObject<HTMLInputElement>;
-    handleKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void
+    handleKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
+    type?: 'text' | 'password';
 }
 
 export const Input: FC<IInput> = ({
@@ -20,7 +21,8 @@ export const Input: FC<IInput> = ({
     isDisabled = false,
     errorMessage,
     inputRef,
-    handleKeyUp
+    handleKeyUp,
+    type = 'text',
 }) => {
 
     return (
@@ -30,12 +32,13 @@ export const Input: FC<IInput> = ({
                 className={`input ${errorMessage && 'error'}`}
                 placeholder={placeholder}
                 disabled={isDisabled}
-                type="text"
+                type={type}
                 id={`input-${title}`}
                 value={value}
                 onChange={(e) => handleChange(e.target.value)}
                 ref={inputRef}
                 onKeyUp={handleKeyUp}
+                autoComplete='off'
             />
             {errorMessage && <div className='errorMesage'>{errorMessage}</div>}
         </div>

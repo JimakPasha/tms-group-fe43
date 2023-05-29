@@ -9,9 +9,11 @@ interface ISearchCard {
     title: string;
     image: string;
     date: string;
+    like: number;
+    dislike: number;
 }
 
-export const SearchCard: FC<ISearchCard> = ({id, date, image, title}) => {
+export const SearchCard: FC<ISearchCard> = ({id, date, image, title, dislike, like}) => {
     return (
         <div className='search-card'>
             <div className="search-card__content">
@@ -25,7 +27,7 @@ export const SearchCard: FC<ISearchCard> = ({id, date, image, title}) => {
                     <Typography content={title} type='H3'/>
                 </div>
             </div>
-            <ActionsCard />
+            <ActionsCard id={id} like={like} dislike={dislike} />
         </div>
     )
 };

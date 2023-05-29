@@ -9,7 +9,7 @@ import { IconButton } from '../../components/IconButton/IconButton';
 import './PostPage.scss';
 import { useParams } from 'react-router-dom';
 import { getPost } from '../../api/getPost';
-import { ICard } from '../../interfaces/ICard';
+import { IPost } from '../../interfaces/IPost';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { useAppSelector } from '../../store/hooks';
@@ -19,7 +19,7 @@ export const PostPage: FC= () => {
     const { id } = useParams();
     const isDark = useAppSelector(isDarktheme);
 
-    const [post, setPost] = useState<null | ICard>(null);
+    const [post, setPost] = useState<null | IPost>(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ export const PostPage: FC= () => {
         }
     }, [id]);
 
-    const breadcrumbsPaths = ({ title }: ICard) => {
+    const breadcrumbsPaths = ({ title }: IPost) => {
         return [
             {name: 'Home', url: '/posts', isActive: true},
             {name: `Post ${title}`, url: '', isActive: false},

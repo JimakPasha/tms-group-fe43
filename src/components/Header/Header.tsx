@@ -2,12 +2,12 @@ import { FC, useState } from 'react';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { UserInfo } from '../UserInfo/UserInfo';
 import { IconButton } from '../IconButton/IconButton';
-import search from '../../assets/icons/search.svg';
-import cancel from '../../assets/icons/cancel.svg';
 import './Header.scss';
-import { Link } from 'react-router-dom';
+import { CancelIcon, UserIcon, SearchIcon } from '../../assets/icons';
+import { useNavigate } from 'react-router';
 
 export const Header: FC = () => {
+    const navigate = useNavigate();
     const isLogged = false;
     const [openSearch, setOpenSearch] = useState(false);
     const [searchValue, setSearchValue] = useState('');
@@ -21,9 +21,12 @@ export const Header: FC = () => {
         setSearchValue(newValue);
       }
 
+      const handClickToSignIn = () => {
+        navigate('/sign-in');
+      }
+
     return (
         <header className='header'>
-            {isLogged && <Link to='/secret-information'>переход на секретную инфу</Link>}
             <BurgerMenu />
             {openSearch && (
                 <div className='header__search-input'>
@@ -38,15 +41,21 @@ export const Header: FC = () => {
             )}
             <div className='header__box'>
                 <div className='header__search'>
-                    <IconButton onClick={handleToggleClick}>
+                    <IconButton onClick={handleToggleClick} type='header'>
                         {openSearch ? (
-                            <img src={cancel} alt="cancel" />
+                            <CancelIcon />
                         ) : (
-                            <img src={search} alt="search" />
+                            <SearchIcon />
                         )}
                     </IconButton>
                  </div>
-                <UserInfo username='Artem Malkin'/>
+                 {isLogged ? (
+                     <UserInfo username='Artem Malkin'/>
+                 ) : (
+                    <IconButton onClick={handClickToSignIn} type='header'>
+                        <UserIcon />
+                    </IconButton>
+                 )}
             </div>
         </header>
     )

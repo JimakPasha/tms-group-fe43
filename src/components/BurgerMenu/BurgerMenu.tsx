@@ -1,13 +1,12 @@
 import { FC, useState } from 'react';
-import burgerMenu from '../../assets/icons/burgerMenu.svg';
-import cancel from '../../assets/icons/cancel.svg';
-import { LightIcon, DarkIcon } from '../../assets/icons';
+import { LightIcon, DarkIcon, CancelIcon, BurgerMenuIcon } from '../../assets/icons';
 import { useNavigate } from 'react-router-dom';
 import './BurgerMenu.scss';
 import { Button } from '../Button/Button';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { isDarktheme } from '../../store/theme/selectors';
 import { toggleThemeAction } from '../../store/theme/actions';
+import { IconButton } from '../IconButton/IconButton';
 
 export const BurgerMenu: FC = () => {
     const navigate = useNavigate();
@@ -31,13 +30,15 @@ export const BurgerMenu: FC = () => {
 
     return (
         <div className='burgerMenu'>
-            <button className='burgerMenu__btn' onClick={handleClick}>
-                {isOpen ? (
-                    <img src={cancel} alt="cancel" />
-                ) : (
-                    <img src={burgerMenu} alt="burgerMenu" />
-                )}
-            </button>
+            <div className='burgerMenu__btn-box'>
+                <IconButton onClick={handleClick} type='header'>
+                    {isOpen ? (
+                        <CancelIcon />
+                    ) : (
+                        <BurgerMenuIcon />
+                    )}
+                </IconButton>
+            </div>
             <div className={`burgerMenu__content ${isOpen && 'open'}`}>
                 <nav className="burgerMenu__nav">
                     {options.map(({id, name, url}) => (
