@@ -1,10 +1,13 @@
 import { FC } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
-export const ProtectedRoute: FC = () => {
-    const isLogged = true;
+interface IProtectedRoute {
+    access: boolean;
+}
 
-    if (!isLogged) {
+export const ProtectedRoute: FC<IProtectedRoute> = ({ access }) => {
+
+    if (!access) {
         return <Navigate replace to={'./posts'} />
     }
 

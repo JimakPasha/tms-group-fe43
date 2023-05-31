@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { themeReducer } from "./theme/reducer";
 import { postsReducer } from "./posts/reducer";
-
+import { confirmEmailReducer } from "./confirmEmail/reducer";
 
 export const store = configureStore({
     reducer: {
         theme: themeReducer,
-        posts: postsReducer
+        posts: postsReducer,
+        confirmEmail: confirmEmailReducer,
 
     },
     devTools: true

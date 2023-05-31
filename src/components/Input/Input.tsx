@@ -7,7 +7,7 @@ interface IInput {
     title: string;
     placeholder?: string;
     isDisabled?: boolean;
-    errorMessage?: string;
+    errorMessage?: string | string[];
     inputRef?: RefObject<HTMLInputElement>;
     handleKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
     type?: 'text' | 'password';
@@ -25,6 +25,8 @@ export const Input: FC<IInput> = ({
     type = 'text',
 }) => {
 
+    const generatErrorMessage = (message: string | string[]) => typeof message === 'string' ? message : message.join(' ');
+
     return (
         <div className='input-wrapper'>
             <label className='label' htmlFor={`input-${title}`}>{title}</label>
@@ -40,7 +42,7 @@ export const Input: FC<IInput> = ({
                 onKeyUp={handleKeyUp}
                 autoComplete='off'
             />
-            {errorMessage && <div className='errorMesage'>{errorMessage}</div>}
+            {errorMessage && <div className='errorMesage'>{generatErrorMessage(errorMessage)}</div>}
         </div>
     )
 };

@@ -5,19 +5,33 @@ import { Button } from '../../components/Button/Button';
 import './SignUpPage.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { createBackToHomePath } from '../../constants/createBackToHomePath';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { postNewUser } from '../../api/postNewUser';
+import { useAppDispatch } from '../../store/hooks';
+import { setConfirmEmailAction } from '../../store/confirmEmail/actions';
+
+interface IError {
+    username: string | string[];
+    email: string | string[];
+    password: string | string[];
+    confirmPassword: string | string[];
+}
 
 export const SignUpPage: FC = () => {
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
     const [username, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassowrd, setConfirmPassowrd] = useState('');
+    const [confirmPassword, setConfirmPassowrd] = useState('');
 
-    const [usernameError, setUsernameError] = useState('');
-    const [emailError, setEmailError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
-    const [confirmPasswordError, setConfirmPassowrdError] = useState('');
+    const [errors, setErrors] = useState<IError>({
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
 
 
     const handleChangeName = (newValue: string) => {
@@ -37,40 +51,48 @@ export const SignUpPage: FC = () => {
     }
 
     const validateForm = () => {
-        let isValid = true;
+        const newErrors: IError = {
+            username: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+        }
 
         if (!username) {
-            setUsernameError('Name is required');
-            isValid = false;
+            newErrors.username = 'Name is required';
         }
         if (!email) {
-            setEmailError('Email is required');
-            isValid = false;
-        } else if (email.indexOf('@') === -1 && email.indexOf('.') === -1) {
-            setEmailError('Email is invalid');
-            isValid = false;
+            newErrors.email = 'Email is required';
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            newErrors.email = 'Email is invalid';
         }
         if (!password) {
-            setPasswordError('Password is required');
-            isValid = false;
+            newErrors.password = 'Password is required';
+        }  else if (password.length < 6) {
+            newErrors.password = 'Password must be at least 6 characters long';
+          }
+        if (!confirmPassword) {
+            newErrors.confirmPassword = 'Confirm password is required';
+        } else if (password !== confirmPassword) {
+            newErrors.confirmPassword = 'Passwords do not match';
+            newErrors.password = 'Passwords do not match';
         }
-
-        if (!confirmPassowrd) {
-            setConfirmPassowrdError('Confirm password is required');
-            isValid = false;
-        } else if (password !== confirmPassowrd) {
-            setPasswordError('Password do not match');
-            setConfirmPassowrdError('Password do not match');
-            isValid = false;
+        
+        let isValid = Object.values(newErrors).every(error => error === '');
+        if (isValid) {
+            return true;
+        } else {
+            setErrors(newErrors);
+            return false;
         }
-
-        return isValid;
     }
 
     const handleSubmit = () => {
         if (validateForm()) {
-            alert('Ура!')
-            // postNewUser({username, email, password});
+            postNewUser({username, email, password}).then(() => {
+                dispatch(setConfirmEmailAction(email));
+                navigate('/confirm-registration');
+            }).catch((error) => setErrors(prev => ({...prev, ...error.response.data})));
         }
     }
 
@@ -84,28 +106,28 @@ export const SignUpPage: FC = () => {
                     placeholder='Your name'
                     value={username}
                     handleChange={handleChangeName}
-                    errorMessage={usernameError}
+                    errorMessage={errors.username}
                 />
                 <Input
                     title='Email'
                     placeholder='Your email'
                     value={email}
                     handleChange={handleChangeEmail}
-                    errorMessage={emailError}
+                    errorMessage={errors.email}
                 />
                 <Input
                     title='Password'
                     placeholder='Your password'
                     value={password}
                     handleChange={handleChangePassword}
-                    errorMessage={passwordError}
+                    errorMessage={errors.password}
                 />
                 <Input
                     title='Confirm password'
                     placeholder='Confirm password'
-                    value={confirmPassowrd}
+                    value={confirmPassword}
                     handleChange={handleChangeConfirmPassword}
-                    errorMessage={confirmPasswordError}
+                    errorMessage={errors.confirmPassword}
                 />
                 <Button content='Sign Up' onClick={handleSubmit} type='primary' />
                 <p className='sign-up__form-description'>
