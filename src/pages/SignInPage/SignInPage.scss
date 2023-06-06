@@ -26,6 +26,15 @@
             display: block;
             margin-top: 16px;
             color: #313037;
-        } 
+        }
+    }
+
+    &__error-message {
+        position: absolute;
+        bottom: 76px;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #FD3419;
     }
 }

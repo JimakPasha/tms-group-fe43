@@ -13,6 +13,7 @@ export const BurgerMenu: FC = () => {
     const dispatch = useAppDispatch();
     const [isOpen, setIsOpen] = useState(false);
     const isDark = useAppSelector(isDarktheme);
+    const isLogged = false;
 
     const options = [
         {id: 1, name: 'Home', url: './posts'},
@@ -27,6 +28,13 @@ export const BurgerMenu: FC = () => {
         navigate(url);
         setIsOpen(false);
     }
+
+    const signIn = () => {
+        navigate('/sign-in');
+        setIsOpen(false);
+    }
+
+    const logout = () => {}
 
     return (
         <div className='burgerMenu'>
@@ -66,11 +74,18 @@ export const BurgerMenu: FC = () => {
                             <LightIcon />
                         </button>
                     </div>
+                    {isLogged ? (
                     <Button
                         content='Log Out'
-                        onClick={() => console.log('Log Out')}
-                        type='secondary'
-                    />
+                        onClick={logout}
+                        type='secondary'/>
+                    ) : (
+                        <Button
+                            content='Sign In'
+                            onClick={signIn}
+                            type='primary'
+                        />
+                    )}
                 </div>
             </div>
         </div>
