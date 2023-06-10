@@ -7,6 +7,6 @@ interface IPostLogin {
 }
 
 export const postLogin = async (formData: IPostLogin) => {
-    const response = await axios.post(urls.AUTH_JWT, formData);
+    const response = await axios.post(urls.AUTH_CREATE_JWT, formData);
     return response.data;
 }

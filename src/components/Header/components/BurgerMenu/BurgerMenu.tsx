@@ -1,24 +1,32 @@
-import { FC, useState } from 'react';
-import { LightIcon, DarkIcon, CancelIcon, BurgerMenuIcon } from '../../assets/icons';
+import { FC, useEffect, useState } from 'react';
+import { LightIcon, DarkIcon, CancelIcon, BurgerMenuIcon } from '../../../../assets/icons';
 import { useNavigate } from 'react-router-dom';
 import './BurgerMenu.scss';
-import { Button } from '../Button/Button';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { isDarktheme } from '../../store/theme/selectors';
-import { toggleThemeAction } from '../../store/theme/actions';
-import { IconButton } from '../IconButton/IconButton';
+import { Button } from '../../../Button/Button';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { isDarktheme } from '../../../../store/theme/selectors';
+import { toggleThemeAction } from '../../../../store/theme/actions';
+import { IconButton } from '../../../IconButton/IconButton';
+import { setLogoutAction } from '../../../../store/auth/actions';
+import { resetUserInfoAction } from '../../../../store/userInfo/actions';
 
 export const BurgerMenu: FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const [isOpen, setIsOpen] = useState(false);
-    const isDark = useAppSelector(isDarktheme);
-    const isLogged = false;
 
-    const options = [
-        {id: 1, name: 'Home', url: './posts'},
-        {id: 2, name: 'Add post', url: ''},
-    ] 
+    const [isOpen, setIsOpen] = useState(false);
+    const [options, setOptions] = useState([{id: 1, name: 'Home', url: './posts'}]);
+
+    const isDark = useAppSelector(isDarktheme);
+    const { isLogged } = useAppSelector(state => state.auth);
+
+    useEffect(() => {
+        if (isLogged) {
+            setOptions(options => [...options, {id: 2, name: 'Add post', url: ''}]);
+        } else {
+            setOptions(options => options.filter((option => option.id !== 2)));
+        }
+    }, [isLogged]);
 
     const handleClick = () => {
         setIsOpen((prev) => !prev);
@@ -34,7 +42,14 @@ export const BurgerMenu: FC = () => {
         setIsOpen(false);
     }
 
-    const logout = () => {}
+    const logout = () => {
+        dispatch(setLogoutAction());
+        navigate('/sign-in');
+        setIsOpen(false);
+        dispatch(resetUserInfoAction());
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+    }
 
     return (
         <div className='burgerMenu'>

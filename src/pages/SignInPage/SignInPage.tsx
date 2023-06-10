@@ -7,6 +7,8 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { createBackToHomePath } from '../../constants/createBackToHomePath';
 import { postLogin } from '../../api/postLogin';
 import './SignInPage.scss';
+import { useAppDispatch } from '../../store/hooks';
+import { setLoggedAction } from '../../store/auth/actions';
 
 interface IError {
     email: string | string[];
@@ -16,6 +18,7 @@ interface IError {
 
 export const SignInPage: FC = () => {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -76,6 +79,7 @@ export const SignInPage: FC = () => {
             postLogin({ email, password }).then((data) => {
                 localStorage.setItem('access_token', data.access);
                 localStorage.setItem('refresh_token', data.refresh);
+                dispatch(setLoggedAction());
                 navigate('/posts');
             }).catch((error) => setErrors(prev => ({...prev, ...error.response.data})));
         }
