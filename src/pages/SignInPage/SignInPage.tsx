@@ -5,7 +5,7 @@ import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { createBackToHomePath } from '../../constants/createBackToHomePath';
-import { postLogin } from '../../api/postLogin';
+import { createToken } from '../../api/auth/createToken';
 import './SignInPage.scss';
 import { useAppDispatch } from '../../store/hooks';
 import { setLoggedAction } from '../../store/auth/actions';
@@ -76,7 +76,7 @@ export const SignInPage: FC = () => {
 
     const handleSubmit = () => {
         if (validateForm()) {
-            postLogin({ email, password }).then((data) => {
+            createToken({ email, password }).then((data) => {
                 localStorage.setItem('access_token', data.access);
                 localStorage.setItem('refresh_token', data.refresh);
                 dispatch(setLoggedAction());

@@ -10,7 +10,7 @@ interface IButton {
     onClick: () => void;
 }
 
-export const Button: FC<IButton> = ({content, isDisabled = false, onClick, type}) => {
+export const Button: FC<IButton> = ({content, isDisabled = false, onClick, type}: IButton) => {
     const isDark = useAppSelector(isDarktheme);
 
     const buttonClass = `button button--${type} ${isDisabled ? 'disabled' : 'active'} ${isDark && 'dark'}`
