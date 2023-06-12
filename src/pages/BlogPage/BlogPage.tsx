@@ -12,7 +12,7 @@ export const BlogPage: FC = () => {
     const { posts, error, loading } = useAppSelector(state => state.posts);
 
     useEffect(() => {
-        dispatch(getPostsAction());
+        dispatch(getPostsAction({}));
     }, [dispatch]);
 
     return (

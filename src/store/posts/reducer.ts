@@ -1,10 +1,11 @@
-import { GET_POSTS_ERROR, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, SET_LIKE, SET_DISLIKE } from "./actionTypes";
+import { GET_POSTS_ERROR, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, SET_LIKE, SET_DISLIKE, RESET_POST } from "./actionTypes";
 import { ActionsType, IPostsState } from "./interfaces";
 
 const initialState: IPostsState = {
   posts: null,
   loading: false,
   error: null,
+  searchValue: '',
 };
 
 export const postsReducer = (state = initialState, action: ActionsType): IPostsState => {
@@ -20,6 +21,7 @@ export const postsReducer = (state = initialState, action: ActionsType): IPostsS
         ...state,
         loading: false,
         posts: action.payload.data,
+        searchValue: action.payload.searchValue
       };
     case GET_POSTS_ERROR:
       return {
@@ -41,6 +43,8 @@ export const postsReducer = (state = initialState, action: ActionsType): IPostsS
               post.id === action.payload ? {...post, dislike: post.dislike + 1} : post
             )
       };
+      case RESET_POST: 
+      return initialState;
     default:
       return state;
   }

@@ -1,10 +1,11 @@
 import { IPost } from '../../interfaces/IPost';
-import { GET_POSTS_ERROR, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, SET_DISLIKE, SET_LIKE } from './actionTypes';
+import { GET_POSTS_ERROR, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, SET_DISLIKE, SET_LIKE, RESET_POST } from './actionTypes';
 
 export interface IPostsState {
     loading: boolean;
     posts: IPost[] | null;
     error: string | null;
+    searchValue?: string;
 }
 
 export interface IGetPostsRequestAction {
@@ -15,6 +16,7 @@ export interface IGetPostsSuccessAction {
     type: typeof GET_POSTS_SUCCESS;
     payload: {
       data: IPost[];
+      searchValue?: string;
     };
 }
   
@@ -30,14 +32,19 @@ export interface ISetLikeAction {
     payload: number;
   }
   
-  export interface ISetDislikeAction {
-    type: typeof SET_DISLIKE;
-    payload: number;
-  }
+export interface ISetDislikeAction {
+  type: typeof SET_DISLIKE;
+  payload: number;
+}
   
+export interface IResetPostsAction {
+  type: typeof RESET_POST;
+}
+
 export type ActionsType = 
     IGetPostsRequestAction 
     | IGetPostsSuccessAction 
     | IGetPostsErrorAction 
     | ISetLikeAction 
-    | ISetDislikeAction;
+    | ISetDislikeAction
+    | IResetPostsAction;

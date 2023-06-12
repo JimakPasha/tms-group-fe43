@@ -1,0 +1,15 @@
+.search-card {
+    padding: 41px 0;
+    border-bottom: 1px solid #DADADA;
+
+    &__content {
+        display: flex;
+        column-gap: 32px;
+        margin-bottom: 45px;
+    }
+
+    &__img-box {
+        width: 96px;
+        height: 96px;
+    }
+}
