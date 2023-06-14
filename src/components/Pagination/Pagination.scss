@@ -1,0 +1,27 @@
+.pagination {
+    display: flex;
+    justify-content: space-between;
+
+    &__items {
+        display: flex;
+    }
+
+    &__btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        &:active {
+            color: #2231AA;
+        }
+
+        &:disabled {
+            opacity: .5;
+            pointer-events: none;
+        }
+
+        &:hover {
+            color: #2231AA;
+        }
+    }
+}

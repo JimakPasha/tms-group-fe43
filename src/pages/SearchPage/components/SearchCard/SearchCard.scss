@@ -12,4 +12,14 @@
         width: 96px;
         height: 96px;
     }
+
+    &__btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        &:hover {
+            color: #2231AA;
+        }
+    }
 }

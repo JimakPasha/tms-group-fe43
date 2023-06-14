@@ -16,19 +16,20 @@ export const Router: FC = () => {
 
     return (
         <Routes>
-        <Route path='/posts' element={<BlogPage />}/>
-        <Route path='/posts/:id' element={<PostPage />}/>
-        <Route path='/search' element={<SearchPage />}/>
-        <Route path='/sign-in' element={<SignInPage />}/>
-        <Route path='/sign-up' element={<SignUpPage />}/>
-        <Route path='/activate/:uid/:token' element={<ActivatePage />}/>
+            <Route path='/' element={<BlogPage />}/>
+            <Route path='/posts' element={<BlogPage />}/>
+            <Route path='/posts/:id' element={<PostPage />}/>
+            <Route path='/search' element={<SearchPage />}/>
+            <Route path='/sign-in' element={<SignInPage />}/>
+            <Route path='/sign-up' element={<SignUpPage />}/>
+            <Route path='/activate/:uid/:token/' element={<ActivatePage />}/>
 
-        <Route element={<ProtectedRoute access={!!confirmEmail} />}>
-            <Route path='/confirm-registration' element={<RegistrationConfirmPage />}/>
-        </Route>
+            <Route element={<ProtectedRoute access={!!confirmEmail} />}>
+                <Route path='/confirm-registration' element={<RegistrationConfirmPage />}/>
+            </Route>
 
-        <Route path='*' element={<>Такой страницы не существует</>}/>
-    </Routes>
+            <Route path='*' element={<>Такой страницы не существует</>}/>
+        </Routes>
     )
 }
 

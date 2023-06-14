@@ -3,6 +3,7 @@ import './SearchCard.scss';
 import { DateCard } from '../../../../components/DateCard/DateCard';
 import { Typography } from '../../../../components/Typography/Typography';
 import { ActionsCard } from '../../../../components/ActionsCard/ActionsCard';
+import { useNavigate } from 'react-router-dom';
 
 interface ISearchCard {
     id: number;
@@ -14,6 +15,8 @@ interface ISearchCard {
 }
 
 export const SearchCard: FC<ISearchCard> = ({id, date, image, title, dislike, like}) => {
+    const navigate = useNavigate();
+
     return (
         <div className='search-card'>
             <div className="search-card__content">
@@ -24,7 +27,9 @@ export const SearchCard: FC<ISearchCard> = ({id, date, image, title, dislike, li
                 </div>
                 <div>
                     <DateCard date={date}/>
-                    <Typography content={title} type='H3'/>
+                    <button className='search-card__btn' onClick={() => navigate(`/posts/${id}`)}>
+                        <Typography content={title} type='H3'/>
+                    </button>
                 </div>
             </div>
             <ActionsCard id={id} like={like} dislike={dislike} />

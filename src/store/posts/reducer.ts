@@ -6,6 +6,7 @@ const initialState: IPostsState = {
   loading: false,
   error: null,
   searchValue: '',
+  countPosts: 0,
 };
 
 export const postsReducer = (state = initialState, action: ActionsType): IPostsState => {
@@ -15,12 +16,14 @@ export const postsReducer = (state = initialState, action: ActionsType): IPostsS
         ...state,
         loading: true,
         error: null,
+        countPosts: 0
       };
     case GET_POSTS_SUCCESS:
       return {
         ...state,
         loading: false,
-        posts: action.payload.data,
+        posts: action.payload.posts,
+        countPosts: action.payload.count,
         searchValue: action.payload.searchValue
       };
     case GET_POSTS_ERROR:

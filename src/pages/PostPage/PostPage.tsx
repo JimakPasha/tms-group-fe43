@@ -17,6 +17,7 @@ import { isDarktheme } from '../../store/theme/selectors';
 
 export const PostPage: FC= () => {
     const { id } = useParams();
+    
     const isDark = useAppSelector(isDarktheme);
 
     const [post, setPost] = useState<null | IPost>(null);

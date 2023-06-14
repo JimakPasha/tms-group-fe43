@@ -6,6 +6,7 @@ export interface IPostsState {
     posts: IPost[] | null;
     error: string | null;
     searchValue?: string;
+    countPosts: number;
 }
 
 export interface IGetPostsRequestAction {
@@ -15,7 +16,8 @@ export interface IGetPostsRequestAction {
 export interface IGetPostsSuccessAction {
     type: typeof GET_POSTS_SUCCESS;
     payload: {
-      data: IPost[];
+      posts: IPost[];
+      count: number;
       searchValue?: string;
     };
 }

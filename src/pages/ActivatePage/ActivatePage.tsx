@@ -9,7 +9,7 @@ import { Spinner } from '../../components/Spinner/Spinner';
 import { postActivate } from '../../api/postActivate';
 
 export const ActivatePage: FC= () => {
-    const  { uid, token } = useParams();
+    const  { uid, token, } = useParams();
 
 
     const [isLoading, setIsLoading] = useState(true);

@@ -11,8 +11,8 @@ const getPostsRequestAction = (): IGetPostsRequestAction => {
   return { type: GET_POSTS_REQUEST };
 }
 
-const getPostsSuccessAction = (data: IPost[], searchValue: string): IGetPostsSuccessAction => {
-  return { type: GET_POSTS_SUCCESS, payload: { data, searchValue } };
+const getPostsSuccessAction = (posts: IPost[], searchValue: string, count: number): IGetPostsSuccessAction => {
+  return { type: GET_POSTS_SUCCESS, payload: { posts, count, searchValue } };
 }
 
 const getPostsErrorAction = (): IGetPostsErrorAction => {
@@ -27,15 +27,15 @@ export const setDislikeAction = (id: number): ISetDislikeAction => {
   return { type: SET_DISLIKE, payload: id };
 }
 
-export const getPostsAction = ({searchValue} : IPostsParams) => async (dispatch: ThunkDispatch<RootState, unknown, ActionsType>) => {
+export const getPostsAction = ({searchValue, offset} : IPostsParams) => async (dispatch: ThunkDispatch<RootState, unknown, ActionsType>) => {
     try {
       dispatch(getPostsRequestAction());
-      const posts = await getPosts({searchValue});
-      const dataWithAddFields: IPost[] = posts.map((post) => ({...post, like: 0, dislike: 0}));
+      const { results, count } = await getPosts({searchValue, offset});
+      const dataWithAddFields: IPost[] = results.map((post) => ({...post, like: 0, dislike: 0}));
       if (searchValue) {
-        dispatch(getPostsSuccessAction(dataWithAddFields, searchValue));
+        dispatch(getPostsSuccessAction(dataWithAddFields, searchValue, count));
       } else {
-        dispatch(getPostsSuccessAction(dataWithAddFields, ''));
+        dispatch(getPostsSuccessAction(dataWithAddFields, '', count));
       }
     } catch (error) {
       dispatch(getPostsErrorAction());

@@ -5,8 +5,13 @@ import axios from 'axios';
 
 type PostsType = Omit<IPost, 'like' | 'dislike'>
 
-export const getPosts = async ({ searchValue = '' }: IPostsParams): Promise<PostsType[]> => {
-    const response = await axios.post(`${urls.GET_POSTS}&search=${searchValue}`);
+interface IResponse {
+    results: PostsType[];
+    count: number
+}
+
+export const getPosts = async ({ searchValue = '', offset = 1 }: IPostsParams): Promise<IResponse> => {
+    const response = await axios.get(`${urls.GET_POSTS}&search=${searchValue}&offset=${offset}`);
     const data = response.data;
-    return data.results;
+    return data;
 }
