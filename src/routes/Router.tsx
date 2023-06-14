@@ -7,6 +7,7 @@ import { SignInPage } from '../pages/SignInPage/SignInPage';
 import { SignUpPage } from '../pages/SignUpPage/SignUpPage';
 import { RegistrationConfirmPage } from '../pages/RegistrationConfirmPage/RegistrationConfirmPage';
 import { ActivatePage } from '../pages/ActivatePage/ActivatePage';
+import { AddPostPage } from '../pages/AddPostPage/AddPostPage';
 import { useAppSelector } from '../store/hooks';
 import { ProtectedRoute } from './ProtectedRoute';
 
@@ -18,6 +19,7 @@ export const Router: FC = () => {
         <Routes>
             <Route path='/' element={<BlogPage />}/>
             <Route path='/posts' element={<BlogPage />}/>
+            <Route path='/add-post' element={<AddPostPage />}/>
             <Route path='/posts/:id' element={<PostPage />}/>
             <Route path='/search' element={<SearchPage />}/>
             <Route path='/sign-in' element={<SignInPage />}/>

@@ -5,19 +5,46 @@
     line-height: 20px;
     font-weight: 600;
 }
+.textarea-wrapper {
+    position: relative;
 
-.textarea {
-    width: 100%;
-    height: 245px;
-    padding: 18px 20px;
-    border-radius: 2px;
-    border: 2px solid #fff;
-    outline: none;
-    font-size: 16px;
-    font-weight: 400;
-    resize: vertical;
-
-    &:focus {
-        border-color: #dadada;
+    .textarea {
+        width: 100%;
+        padding: 18px 20px;
+        border-radius: 2px;
+        border: 2px solid #fff;
+        outline: none;
+        font-size: 16px;
+        font-weight: 400;
+        resize: none;
+    
+        &.s {
+            height: 98px;
+        }
+    
+        &.m {
+            height: 171px;
+        }
+    
+        &.l {
+            height: 245px;
+        }
+    
+        &.error {
+            border-color: #FD3419;
+        }
+    
+        &:focus {
+            border-color: #dadada;
+        }
     }
+    
+    .errorMesage {
+        position: absolute;
+        bottom: -32px;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #FD3419;
+    } 
 }

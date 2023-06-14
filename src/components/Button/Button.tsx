@@ -8,12 +8,13 @@ interface IButton {
     type: 'primary' | 'secondary' | 'secondary2';
     content: string;
     onClick: () => void;
+    isFullWidth?: boolean;
 }
 
-export const Button: FC<IButton> = ({content, isDisabled = false, onClick, type}: IButton) => {
+export const Button: FC<IButton> = ({content, isDisabled = false, onClick, type, isFullWidth = true}: IButton) => {
     const isDark = useAppSelector(isDarktheme);
 
-    const buttonClass = `button button--${type} ${isDisabled ? 'disabled' : 'active'} ${isDark && 'dark'}`
+    const buttonClass = `button button--${type} ${isDisabled ? 'disabled' : 'active'} ${isDark && 'dark'} ${isFullWidth && 'full-width'}`
 
     return (
         <button
