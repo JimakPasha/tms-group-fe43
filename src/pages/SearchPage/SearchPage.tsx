@@ -5,16 +5,16 @@ import { useAppSelector } from '../../store/hooks';
 import { Spinner } from '../../components/Spinner/Spinner';
 
 export const SearchPage: FC = () => {
-    const { error, loading, posts, searchValue } = useAppSelector(state => state.posts);
+    const { error, loading, postsAll, searchValue } = useAppSelector(state => state.posts);
 
     const renderPosts = () => {
-        if (posts === null) {
+        if (postsAll === null) {
             return <Typography content='Use search to find posts' type='H2'/>
-        } else if (posts.length) {
+        } else if (postsAll.length) {
             return (
                 <>
                     <Typography content={`Search results ${searchValue}`} type='H1'/>
-                    <SearchList posts={posts} />
+                    <SearchList posts={postsAll} />
                 </>
             )
         } else {

@@ -12,9 +12,10 @@ interface ISearchCard {
     date: string;
     like: number;
     dislike: number;
+    isFavorite: boolean;
 }
 
-export const SearchCard: FC<ISearchCard> = ({id, date, image, title, dislike, like}) => {
+export const SearchCard: FC<ISearchCard> = ({id, date, image, title, dislike, like, isFavorite}) => {
     const navigate = useNavigate();
 
     return (
@@ -32,7 +33,7 @@ export const SearchCard: FC<ISearchCard> = ({id, date, image, title, dislike, li
                     </button>
                 </div>
             </div>
-            <ActionsCard id={id} like={like} dislike={dislike} />
+            <ActionsCard id={id} like={like} dislike={dislike} isFavorite={isFavorite} />
         </div>
     )
 };

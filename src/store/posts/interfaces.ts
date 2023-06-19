@@ -1,9 +1,10 @@
 import { IPost } from '../../interfaces/IPost';
-import { GET_POSTS_ERROR, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, SET_DISLIKE, SET_LIKE, RESET_POST } from './actionTypes';
+import { GET_POSTS_ERROR, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, SET_DISLIKE, SET_LIKE, RESET_POST, TOGGLE_FAVORITE, SET_FAVORITE } from './actionTypes';
 
 export interface IPostsState {
     loading: boolean;
-    posts: IPost[] | null;
+    postsAll: IPost[] | null;
+    favoritesPosts: IPost[] | null;
     error: string | null;
     searchValue?: string;
     countPosts: number;
@@ -38,9 +39,18 @@ export interface ISetDislikeAction {
   type: typeof SET_DISLIKE;
   payload: number;
 }
+
+export interface IToggleFavoriteAction {
+  type: typeof TOGGLE_FAVORITE;
+  payload: number;
+}
   
 export interface IResetPostsAction {
   type: typeof RESET_POST;
+}
+
+export interface ISetFavoriteAction {
+  type: typeof SET_FAVORITE;
 }
 
 export type ActionsType = 
@@ -49,4 +59,6 @@ export type ActionsType =
     | IGetPostsErrorAction 
     | ISetLikeAction 
     | ISetDislikeAction
-    | IResetPostsAction;
+    | IResetPostsAction
+    | IToggleFavoriteAction
+    | ISetFavoriteAction;

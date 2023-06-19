@@ -1,8 +1,9 @@
-import { GET_POSTS_ERROR, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, SET_LIKE, SET_DISLIKE, RESET_POST } from "./actionTypes";
+import { GET_POSTS_ERROR, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, SET_LIKE, SET_DISLIKE, RESET_POST, TOGGLE_FAVORITE, SET_FAVORITE } from "./actionTypes";
 import { ActionsType, IPostsState } from "./interfaces";
 
 const initialState: IPostsState = {
-  posts: null,
+  postsAll: null,
+  favoritesPosts: null,
   loading: false,
   error: null,
   searchValue: '',
@@ -22,7 +23,7 @@ export const postsReducer = (state = initialState, action: ActionsType): IPostsS
       return {
         ...state,
         loading: false,
-        posts: action.payload.posts,
+        postsAll: action.payload.posts,
         countPosts: action.payload.count,
         searchValue: action.payload.searchValue
       };
@@ -35,17 +36,35 @@ export const postsReducer = (state = initialState, action: ActionsType): IPostsS
       case SET_LIKE:
         return {
           ...state,
-          posts: state.posts && state.posts.map((post) => 
+          postsAll: state.postsAll && state.postsAll.map((post) => 
             post.id === action.payload ? {...post, like: post.like + 1} : post
+          ),
+          favoritesPosts: state.favoritesPosts && state.favoritesPosts.map((post) => 
+          post.id === action.payload ? {...post, like: post.like + 1} : post
           )
         };
       case SET_DISLIKE:
           return {
             ...state,
-            posts: state.posts && state.posts.map((post) => 
+            postsAll: state.postsAll && state.postsAll.map((post) => 
               post.id === action.payload ? {...post, dislike: post.dislike + 1} : post
+            ),
+            favoritesPosts: state.favoritesPosts && state.favoritesPosts.map((post) => 
+            post.id === action.payload ? {...post, dislike: post.dislike + 1} : post
             )
       };
+      case TOGGLE_FAVORITE:
+        return {
+          ...state,
+          postsAll: state.postsAll && state.postsAll.map((post) => 
+            post.id === action.payload ? {...post, isFavorite: !post.isFavorite} : post
+          )
+      };
+      case SET_FAVORITE:
+        return {
+          ...state,
+          favoritesPosts: state.postsAll && state.postsAll.filter((post) => post.isFavorite)
+        };
       case RESET_POST: 
       return initialState;
     default:

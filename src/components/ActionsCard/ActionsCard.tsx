@@ -3,7 +3,7 @@ import './ActionsCard.scss';
 import { MenuCard } from '../MenuCard/MenuCard';
 import { FavoriteIcon, ThumbsDownIcon, ThumbsUpIcon } from '../../assets/icons';
 import { useAppDispatch } from '../../store/hooks';
-import { setDislikeAction, setLikeAction } from '../../store/posts/actions';
+import { setDislikeAction, setFavoriteAction, setLikeAction, setToggleFavoriteAction } from '../../store/posts/actions';
 import { IconButton } from '../IconButton/IconButton';
 
 
@@ -11,18 +11,24 @@ interface IActionsCard {
     id: number;
     like: number;
     dislike: number;
+    isFavorite: boolean;
 }
 
-export const ActionsCard: FC<IActionsCard> = ({ id, like, dislike }) => {
+export const ActionsCard: FC<IActionsCard> = ({ id, like, dislike, isFavorite }) => {
     const dispatch = useAppDispatch();
 
     const handleLike = () => {
-        console.log(id);
         dispatch(setLikeAction(id));
     }
 
     const handleDislike = () => {
         dispatch(setDislikeAction(id));
+    }
+
+
+    const handleToggleFavorites = () => {
+        dispatch(setToggleFavoriteAction(id));
+        dispatch(setFavoriteAction());
     }
 
     return (
@@ -42,7 +48,9 @@ export const ActionsCard: FC<IActionsCard> = ({ id, like, dislike }) => {
                 </IconButton>
             </div>
             <div className='actions-card__box'>
-                <FavoriteIcon />
+                <IconButton onClick={handleToggleFavorites}>
+                    <FavoriteIcon className={isFavorite ? 'favorite' : 'noFavorite'} />
+                </IconButton>
                 <MenuCard />
             </div>
         </div>

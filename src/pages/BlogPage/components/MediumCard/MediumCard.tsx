@@ -12,9 +12,10 @@ interface IMediumCard {
     onClick: (id: number) => void;
     like: number;
     dislike: number;
+    isFavorite: boolean;
 }
 
-export const MediumCard: FC<IMediumCard> = ({id, date, image, title, onClick, dislike, like}) => {
+export const MediumCard: FC<IMediumCard> = ({id, date, image, title, onClick, dislike, like, isFavorite}) => {
     return (
         <div className='medium-card'>
             <div className='medium-card__img-box'>
@@ -25,7 +26,7 @@ export const MediumCard: FC<IMediumCard> = ({id, date, image, title, onClick, di
                 <Typography content={title} type='H3'/>
             </button>
             <div className='medium-card__actions'>
-                <ActionsCard id={id} dislike={dislike} like={like}/>
+                <ActionsCard id={id} dislike={dislike} like={like} isFavorite={isFavorite} />
             </div>
         </div>
     )

@@ -12,7 +12,8 @@ import { Pagination } from '../../components/Pagination/Pagination';
 export const BlogPage: FC = () => {
     const dispatch = useAppDispatch();
     const [page, setPage] = useState(12);
-    const { posts, error, loading, countPosts } = useAppSelector(state => state.posts);
+    const { favoritesPosts, postsAll, error, loading, countPosts } = useAppSelector(state => state.posts);
+    const { activeTab } = useAppSelector(state => state.tabs);
 
     useEffect(() => {
         dispatch(getPostsAction({offset: page * LIMIT_POSTS}));
@@ -24,6 +25,11 @@ export const BlogPage: FC = () => {
     
     const handlePrevClick = () => setPage(page - 1);
 
+    const renderPosts = () => {
+        if (postsAll && postsAll.length > 0 && activeTab === 'All') return <PostList cards={postsAll}/>;
+        if (favoritesPosts && favoritesPosts.length > 0 && activeTab === 'My favorites') return <PostList cards={favoritesPosts}/>
+    }
+
     return (
         <div className='blog'>
             <Typography content='Blog' type='H1' />
@@ -32,17 +38,19 @@ export const BlogPage: FC = () => {
                     <Tabs />
                 </div>
             )}
-            {posts && posts.length > 1 && <PostList cards={posts}/>}
+            {renderPosts()}
             {error && <>{error}</>}
 
             <div className='blog__pagination'>
-                <Pagination 
-                    countElement={countPosts}
-                    page={page}
-                    handlePageClick={handlePageClick}
-                    handleNextClick={handleNextClick}
-                    handlePrevClick={handlePrevClick}
-                />
+                {activeTab === 'All' && (
+                    <Pagination 
+                        countElement={countPosts}
+                        page={page}
+                        handlePageClick={handlePageClick}
+                        handleNextClick={handleNextClick}
+                        handlePrevClick={handlePrevClick}
+                    />
+                )}
             </div>
         </div>
     )

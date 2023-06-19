@@ -12,9 +12,10 @@ interface ISmallCard {
     onClick: (id: number) => void;
     like: number;
     dislike: number;
+    isFavorite: boolean;
 }
 
-export const SmallCard: FC<ISmallCard> = ({id, date, image, title, onClick, dislike, like}) => {
+export const SmallCard: FC<ISmallCard> = ({id, date, image, title, onClick, dislike, like, isFavorite}) => {
     return (
         <div className='small-card'>
             <div className='small-card__content'>
@@ -30,7 +31,7 @@ export const SmallCard: FC<ISmallCard> = ({id, date, image, title, onClick, disl
                     </div>
                 </div>
             </div>
-            <ActionsCard id={id} dislike={dislike} like={like} />
+            <ActionsCard id={id} dislike={dislike} like={like} isFavorite={isFavorite} />
         </div>
     )
 };

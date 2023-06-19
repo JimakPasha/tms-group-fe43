@@ -3,7 +3,7 @@ import { IPostsParams } from "../interfaces/IPostsParams";
 import { urls } from "./urls";
 import axios from 'axios';
 
-type PostsType = Omit<IPost, 'like' | 'dislike'>
+type PostsType = Omit<IPost, 'like' | 'dislike' | 'isFavorite'>
 
 interface IResponse {
     results: PostsType[];

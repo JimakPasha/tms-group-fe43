@@ -1,7 +1,7 @@
 import { IPost } from "../../interfaces/IPost";
 import { getPosts } from '../../api/getPosts';
-import { IGetPostsRequestAction, IGetPostsErrorAction, IGetPostsSuccessAction, ActionsType, ISetLikeAction, ISetDislikeAction, IResetPostsAction } from "./interfaces";
-import { GET_POSTS_ERROR, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, SET_DISLIKE, SET_LIKE, RESET_POST } from './actionTypes';
+import { IGetPostsRequestAction, IGetPostsErrorAction, IGetPostsSuccessAction, ActionsType, ISetLikeAction, ISetDislikeAction, IResetPostsAction, IToggleFavoriteAction, ISetFavoriteAction } from "./interfaces";
+import { GET_POSTS_ERROR, GET_POSTS_REQUEST, GET_POSTS_SUCCESS, SET_DISLIKE, SET_LIKE, RESET_POST, TOGGLE_FAVORITE, SET_FAVORITE } from './actionTypes';
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { IPostsParams } from "../../interfaces/IPostsParams";
@@ -27,11 +27,19 @@ export const setDislikeAction = (id: number): ISetDislikeAction => {
   return { type: SET_DISLIKE, payload: id };
 }
 
+export const setToggleFavoriteAction = (id: number): IToggleFavoriteAction => {
+  return { type: TOGGLE_FAVORITE, payload: id };
+}
+
+export const setFavoriteAction = (): ISetFavoriteAction => {
+  return { type: SET_FAVORITE };
+}
+
 export const getPostsAction = ({searchValue, offset} : IPostsParams) => async (dispatch: ThunkDispatch<RootState, unknown, ActionsType>) => {
     try {
       dispatch(getPostsRequestAction());
       const { results, count } = await getPosts({searchValue, offset});
-      const dataWithAddFields: IPost[] = results.map((post) => ({...post, like: 0, dislike: 0}));
+      const dataWithAddFields: IPost[] = results.map((post) => ({...post, like: 0, dislike: 0, isFavorite: false}));
       if (searchValue) {
         dispatch(getPostsSuccessAction(dataWithAddFields, searchValue, count));
       } else {

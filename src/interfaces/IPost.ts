@@ -9,4 +9,5 @@ export interface IPost {
     author: number;
     dislike: number;
     like: number;
+    isFavorite: boolean;
 }

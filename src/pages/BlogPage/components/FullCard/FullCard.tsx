@@ -13,9 +13,10 @@ interface IFullCard {
     onClick: (id: number) => void;
     like: number;
     dislike: number;
+    isFavorite: boolean;
 }
 
-export const FullCard: FC<IFullCard> = ({id, text, title, image, date, onClick, like, dislike}) => {
+export const FullCard: FC<IFullCard> = ({id, text, title, image, date, onClick, like, dislike, isFavorite}) => {
 
     return (
         <div className='full-card'>
@@ -34,7 +35,7 @@ export const FullCard: FC<IFullCard> = ({id, text, title, image, date, onClick, 
                     </div>
                 </div>
             </div>
-            <ActionsCard id={id} dislike={dislike} like={like}/>
+            <ActionsCard id={id} dislike={dislike} like={like} isFavorite={isFavorite} />
         </div>
     )
 };

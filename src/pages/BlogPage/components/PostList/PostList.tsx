@@ -25,17 +25,17 @@ export const PostList: FC<IPostList> = ({cards}) => {
         <div className='list'>
             <div>
                 <div className='list__full-card'>
-                    <FullCard id={fullCard.id} date={fullCard.date} image={fullCard.image} text={fullCard.text} title={fullCard.title} onClick={handleClick} dislike={fullCard.dislike} like={fullCard.like} />
+                    <FullCard id={fullCard.id} date={fullCard.date} image={fullCard.image} text={fullCard.text} title={fullCard.title} onClick={handleClick} dislike={fullCard.dislike} like={fullCard.like} isFavorite={fullCard.isFavorite} />
                 </div>
                 <div className='list__medium-card'>
-                    {mediumCards.map(({id, date, image, title, like, dislike}) => (
-                        <MediumCard key={id} id={id} date={date} image={image} title={title} onClick={handleClick} dislike={dislike} like={like} />
+                    {mediumCards.map(({id, date, image, title, like, dislike, isFavorite}) => (
+                        <MediumCard key={id} id={id} date={date} image={image} title={title} onClick={handleClick} dislike={dislike} like={like} isFavorite={isFavorite} />
                     ))}
                 </div>
             </div>
             <div className='list__small-card'>
-                {smallCards.map(({id, date, image, title, like, dislike}) => (
-                        <SmallCard key={id} id={id} date={date} image={image} title={title} onClick={handleClick} dislike={dislike} like={like} />
+                {smallCards.map(({id, date, image, title, like, dislike, isFavorite}) => (
+                        <SmallCard key={id} id={id} date={date} image={image} title={title} onClick={handleClick} dislike={dislike} like={like} isFavorite={isFavorite} />
                 ))}
             </div>
         </div>
