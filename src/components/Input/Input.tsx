@@ -10,7 +10,7 @@ interface IInput {
     errorMessage?: string | string[];
     inputRef?: RefObject<HTMLInputElement>;
     handleKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
-    type?: 'text' | 'password';
+    type?: 'text' | 'password' | 'number';
 }
 
 export const Input: FC<IInput> = ({

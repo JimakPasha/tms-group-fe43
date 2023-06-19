@@ -14,12 +14,11 @@ import { ProtectedRoute } from './ProtectedRoute';
 export const Router: FC = () => {
 
     const { confirmEmail } = useAppSelector(state => state.confirmEmail);
+    const { isLogged } = useAppSelector(state => state.auth);
 
     return (
         <Routes>
-            <Route path='/' element={<BlogPage />}/>
             <Route path='/posts' element={<BlogPage />}/>
-            <Route path='/add-post' element={<AddPostPage />}/>
             <Route path='/posts/:id' element={<PostPage />}/>
             <Route path='/search' element={<SearchPage />}/>
             <Route path='/sign-in' element={<SignInPage />}/>
@@ -28,6 +27,10 @@ export const Router: FC = () => {
 
             <Route element={<ProtectedRoute access={!!confirmEmail} />}>
                 <Route path='/confirm-registration' element={<RegistrationConfirmPage />}/>
+            </Route>
+
+            <Route element={<ProtectedRoute access={isLogged} />}>
+                <Route path='/add-post' element={<AddPostPage />}/>
             </Route>
 
             <Route path='*' element={<>Такой страницы не существует</>}/>

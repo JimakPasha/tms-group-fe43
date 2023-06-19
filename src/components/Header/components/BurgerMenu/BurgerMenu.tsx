@@ -22,7 +22,7 @@ export const BurgerMenu: FC = () => {
 
     useEffect(() => {
         if (isLogged) {
-            setOptions(options => [...options, {id: 2, name: 'Add post', url: ''}]);
+            setOptions(options => [...options, {id: 2, name: 'Add post', url: './add-post'}]);
         } else {
             setOptions(options => options.filter((option => option.id !== 2)));
         }

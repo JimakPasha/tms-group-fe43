@@ -4,6 +4,8 @@ import './AddPostForm.scss';
 import { Textarea } from '../../../components/Textarea/Textarea';
 import { Button } from '../../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import { postNewPost } from '../../../api/postNewPost';
+import { FileInput } from '../../../components/FileInput/FileInput';
 
 interface IError {
     title: string;
@@ -18,7 +20,7 @@ export const AddPostForm: FC = () => {
 
     const [title, setTitle] = useState('');
     const [lesson, setLesson] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState<File | null>(null);
     const [description, setDescription] = useState('');
     const [text, setText] = useState('');
 
@@ -50,6 +52,14 @@ export const AddPostForm: FC = () => {
         setText(newValue);
     }
 
+    const handleChangeImage = (files: FileList | null) => {
+        if (files) {
+            setImage(files[0]);
+        } else {
+            setImage(null);
+        }
+    }
+
     const handleCancel = () => {
         navigate('/posts');
     }
@@ -64,6 +74,11 @@ export const AddPostForm: FC = () => {
         }
 
         if (!title) {
+            newErrors.image = 'Image is required';
+        }
+
+        
+        if (!image) {
             newErrors.title = 'Title is required';
         }
 
@@ -90,9 +105,10 @@ export const AddPostForm: FC = () => {
     }
 
     const handleSubmit = () => {
-        if (validateForm()) {
-            console.log('ok');
-            // делаем запрос
+        if (validateForm() && image) {
+            postNewPost({description, image, lesson_num: lesson, text, title})
+                .then(() => console.log('ok'))
+                .catch(() => console.log('error'))
         }
     }
 
@@ -105,13 +121,18 @@ export const AddPostForm: FC = () => {
                 handleChange={handleChangeTitle}
                 errorMessage={errors.title}
             />
-            <Input
-                title='Lesson'
-                placeholder='Add your lesson number'
-                value={lesson}
-                handleChange={handleChangeLesson}
-                errorMessage={errors.lesson}
-            />
+            <div className='box-input'>
+                <Input
+                    title='Lesson'
+                    placeholder='Add your lesson number'
+                    value={lesson}
+                    handleChange={handleChangeLesson}
+                    errorMessage={errors.lesson}
+                    type='number'
+                />
+
+                <FileInput handleChange={handleChangeImage} title='Image' accept='.jpg,.png'/>
+            </div>
 
             <Textarea 
                 title='Description'

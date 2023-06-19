@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import './Button.scss';
 import { useAppSelector } from '../../store/hooks';
 import { isDarktheme } from '../../store/theme/selectors';
@@ -6,8 +6,8 @@ import { isDarktheme } from '../../store/theme/selectors';
 interface IButton {
     isDisabled?: boolean;
     type: 'primary' | 'secondary' | 'secondary2';
-    content: string;
-    onClick: () => void;
+    content: string | ReactNode;
+    onClick?: () => void;
     isFullWidth?: boolean;
 }
 
