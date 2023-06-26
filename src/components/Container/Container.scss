@@ -1,12 +1,19 @@
-.container {
-    max-width: 1130px;
+.container-theme {
     width: 100%;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
     row-gap: 72px;
     padding: 72px 5px 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1130px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
 }
 
 .dark {

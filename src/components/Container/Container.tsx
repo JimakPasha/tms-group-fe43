@@ -11,8 +11,10 @@ export const Container: FC<IContainer> = ({children}) => {
     const isDark = useAppSelector(isDarktheme);
 
     return (
-        <div className={`container ${isDark ? 'dark' : 'light'}`}>
-            {children}
+        <div className={`container-theme ${isDark ? 'dark' : 'light'}`}>
+            <div className='container'>
+                {children}
+            </div>
         </div>
     )
 };
