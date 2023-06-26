@@ -41,6 +41,7 @@ export const Input: FC<IInput> = ({
                 ref={inputRef}
                 onKeyUp={handleKeyUp}
                 autoComplete='off'
+                data-testid='input'
             />
             {errorMessage && <div className='errorMesage'>{generatErrorMessage(errorMessage)}</div>}
         </div>

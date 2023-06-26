@@ -24,7 +24,7 @@ export const Textarea: FC<ITextarea> = ({value, handleChange, title, placeholder
                 value={value}
                 onChange={(e) => handleChange(e.target.value)}
             />
-            {errorMessage && <div className='errorMesage'>{generatErrorMessage(errorMessage)}</div>}
+            {errorMessage && <div className='errorMesage' data-testid='error-message'>{generatErrorMessage(errorMessage)}</div>}
         </div>
     )
 };

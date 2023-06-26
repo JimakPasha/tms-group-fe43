@@ -22,6 +22,7 @@ export const Button: FC<IButton> = ({content, isDisabled = false, onClick, type,
           onClick={onClick}
           disabled={isDisabled}
           type='button'
+          data-testid='button'
         >
             {content}
         </button>
