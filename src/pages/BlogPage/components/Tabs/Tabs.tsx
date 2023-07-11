@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import './Tabs.scss';
 import { Tab } from '../Tab/Tab';
 import { useAppSelector } from '../../../../store/hooks';
